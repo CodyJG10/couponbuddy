@@ -1,0 +1,38 @@
+﻿@model LocationManagerIndexViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<a asp-action="AddVendor" class="control control-label">Add Vendor To Location</a>
+<a asp-action="CreateAd" class="control control-label">Create Ad</a>
+<a asp-action="ViewAds" class="control control-label">View Ads</a>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <label class="control-label control">Name</label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Vendors)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a asp-action="VendorDetails" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="RemoveVendor" asp-route-id="@item.Id">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,25 @@
+﻿<Application x:Class="BrochureBuddy.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:BrochureBuddy"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             StartupUri="MainWindow.xaml"
+             ShutdownMode="OnExplicitShutdown">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <Thickness x:Key="CATEGORY_BUTTON_MARGIN">15</Thickness>
+            <sys:Double x:Key="CATEGORY_BUTTON_FONT_SIZE">15.0</sys:Double>
+
+            <Thickness x:Key="VENDOR_LIST_BUTTON_MARGIN">15</Thickness>
+            <sys:Double x:Key="VENDOR_LIST_BUTTON_FONT_SIZE">15.0</sys:Double>
+
+            <Brush x:Key="COLOR_PRIMARY">#93f0ff</Brush>
+            <Brush x:Key="COLOR_SECONDARY">Red</Brush>
+            <Brush x:Key="FONT_COLOR">White</Brush>
+
+            <sys:Double x:Key="FONT_SIZE">50</sys:Double>
+            
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
