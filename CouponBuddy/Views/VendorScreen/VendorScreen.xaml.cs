@@ -25,14 +25,12 @@ namespace CouponBuddy.Views.VendorScreen
             DataContext = new VendorScreenViewModel(vendor);
         }
 
-        private void BtnNext_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            (DataContext as VendorScreenViewModel).NextImage();
-        }
-
-        private void BtnPrevious_Click(object sender, RoutedEventArgs e)
-        {
-            (DataContext as VendorScreenViewModel).PreviousImage();
+            VendorScreenViewModel viewModel = DataContext as VendorScreenViewModel;
+            Button button = sender as Button;
+            int id = int.Parse(button.Tag.ToString());
+            viewModel.CouponButtonClicked(id);
         }
     }
 }

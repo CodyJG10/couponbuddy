@@ -24,7 +24,7 @@ namespace CouponBuddy.Api
                 await blockBlob.DownloadToByteArrayAsync(byteArray, 0);
                 return byteArray;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return null;
             }

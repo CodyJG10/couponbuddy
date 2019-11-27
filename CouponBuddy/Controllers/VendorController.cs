@@ -18,6 +18,7 @@ namespace CouponBuddy.Controllers
         private readonly Dictionary<int, Vendor> vendors = new Dictionary<int, Vendor>();
 
         private readonly Dictionary<int, VendorMedia> media = new Dictionary<int, VendorMedia>();
+        private readonly Dictionary<int, List<VendorCoupon>> coupons = new Dictionary<int, List<VendorCoupon>>();
 
         private static VendorController _instance;
         public static VendorController Instance
@@ -63,27 +64,15 @@ namespace CouponBuddy.Controllers
 
                     VendorMedia vendorMedia = new VendorMedia();
 
-                    var vendorOwnedMedia = vendorMediaObjectsList.Where(x => x.VendorId == vendor.Id).ToList();
-                    vendorMedia.VendorMediaObjects = new List<ImageSource>();
-                    foreach (var media in vendorOwnedMedia)
-                    {
-                        ImageSource mediaImage = await imgLoader.LoadImageSource(vendor, media.Guid.ToString());
-                        vendorMedia.VendorMediaObjects.Add(mediaImage);
-                    }
-
-                    if (vendorOwnedMedia.Count == 0) continue;
-
-                    vendor.VendorMedia = vendorOwnedMedia;
-
-                    //var homeImg = await imgLoader.LoadImageSource(containerName, "home");
-                    //vendorMedia.homeImage = homeImg;
-
                     var inactiveImg = await imgLoader.LoadImageSource(containerName, "inactive");
                     vendorMedia.inactiveImage = inactiveImg;
 
                     var logoImg = await imgLoader.LoadImageSource(containerName, "logo");
                     vendorMedia.logoImage = logoImg;
 
+                    var coupons = await _db.GetVendorCoupons(vendor.Id);
+
+                    this.coupons.Add(vendor.Id, coupons.ToList());
                     media.Add(vendor.Id, vendorMedia);
                     vendors.Add(vendor.Id, vendor);
 
@@ -123,6 +112,11 @@ namespace CouponBuddy.Controllers
         public List<Vendor> GetAllVendors()
         {
             return vendors.Values.ToList();
+        }
+
+        public List<VendorCoupon> GetVendorCoupons(int vendorId)
+        {
+            return coupons[vendorId];
         }
         #endregion
     }

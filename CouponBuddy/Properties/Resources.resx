@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BASE_URL" xml:space="preserve">
-    <value>http://CouponBuddy.azurewebsites.net/</value>
+    <value>https://couponbuddy.azurewebsites.net/</value>
   </data>
   <data name="INACTIVE_AD_DURATION" xml:space="preserve">
     <value>5</value>
@@ -127,6 +127,6 @@
     <value>45</value>
   </data>
   <data name="LOCATION_ID" xml:space="preserve">
-    <value>199f4f0c-b65a-4876-be29-425bf979520d</value>
+    <value>62885dd9-0d90-420e-9141-ecbbd8ed5c62</value>
   </data>
 </root>

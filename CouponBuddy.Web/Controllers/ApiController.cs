@@ -57,6 +57,13 @@ namespace CouponBuddy.Web.Controllers
             return vendorsAtLocation;
         }
 
+        [HttpGet("Coupons/{id}")]
+        public IEnumerable<VendorCoupon> GetCoupons([FromRoute]int id)
+        {
+            var coupons = _context.VendorCoupons.Where(x => x.Id == id);
+            return coupons;
+        }
+
         [HttpGet("Location/{id}")]
         public Location GetLocation([FromRoute]string id)
         {

@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Extras.CommonServiceLocator;
+using BrochureBuddy.Util;
 using CommonServiceLocator;
 using CouponBuddy.Api;
 using CouponBuddy.Api.Interfaces;

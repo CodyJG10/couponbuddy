@@ -20,6 +20,8 @@ namespace CouponBuddy.Util
         {
             var bytes = await LoadImage(container, fileName);
 
+            if (bytes == null) return null;
+
             BitmapImage img = new BitmapImage
             {
                 CacheOption = BitmapCacheOption.OnLoad

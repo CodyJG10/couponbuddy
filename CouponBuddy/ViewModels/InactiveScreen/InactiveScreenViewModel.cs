@@ -52,6 +52,10 @@ namespace CouponBuddy.ViewModels.InactiveScreen
 
         private void RunAds()
         {
+            if (Images.Count == 0)
+            {
+                return;
+            }
             CurrentImage = Images[currentImageIndex];
             int adDuration = int.Parse(Properties.Resources.INACTIVE_AD_DURATION);
             System.Timers.Timer timer = new System.Timers.Timer();

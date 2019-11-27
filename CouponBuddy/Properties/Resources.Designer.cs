@@ -39,7 +39,7 @@ namespace CouponBuddy.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CouponBuddy.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BrochureBuddy.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace CouponBuddy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://CouponBuddy.azurewebsites.net/.
+        ///   Looks up a localized string similar to https://couponbuddy.azurewebsites.net/.
         /// </summary>
         internal static string BASE_URL {
             get {
@@ -88,7 +88,7 @@ namespace CouponBuddy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 199f4f0c-b65a-4876-be29-425bf979520d.
+        ///   Looks up a localized string similar to 62885dd9-0d90-420e-9141-ecbbd8ed5c62.
         /// </summary>
         internal static string LOCATION_ID {
             get {

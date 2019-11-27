@@ -15,6 +15,7 @@ namespace CouponBuddy.Api.Interfaces
         Task<IEnumerable<LocationAd>> GetAds(string locationId);
         Task<Location> GetLocation(string id);
         Task<IEnumerable<VendorMedia>> GetVendorMedia();
+        Task<IEnumerable<VendorCoupon>> GetVendorCoupons(int vendorId);
         void AddImpression(Vendor vendor, string locationId);
         void AddClick(Vendor vendor, string locationId);
     }

@@ -18,15 +18,14 @@ using System.Drawing;
 using Gma.QrCodeNet.Encoding;
 using Gma.QrCodeNet.Encoding.Windows.Render;
 using System.Windows.Media.Imaging;
+using System.Windows.Input;
+using BrochureBuddy.Views.Coupon;
 
 namespace CouponBuddy.ViewModels.VendorScreen
 {
     public class VendorScreenViewModel : ViewModel
     {
-        private int currentIndex = 1;
-
         public Vendor Vendor { get; set; }
-        private List<ImageSource> VendorMedia { get; set; } = new List<ImageSource>();
         private ImageSource _image; 
         public ImageSource Image
         {
@@ -55,19 +54,27 @@ namespace CouponBuddy.ViewModels.VendorScreen
             }
         }
 
+        public ObservableCollection<VendorCoupon> Coupons { get; } = new ObservableCollection<VendorCoupon>();
+
         public VendorScreenViewModel(Vendor vendor)
         {
             Vendor = vendor;
             LoadMedia();
             LoadQrCode();
+            LoadCoupons();
+        }
+
+        private void LoadCoupons()
+        {
+            var coupons = VendorController.Instance.GetVendorCoupons(Vendor.Id);
+            coupons.ForEach(x => Coupons.Add(x));
         }
 
         private void LoadMedia()
         {
             BitmapImageLoader imgLoader = new BitmapImageLoader();
-            var vendorMedia = VendorController.Instance.GetVendorMedia(Vendor.Id).VendorMediaObjects;
-            vendorMedia.ForEach(x => VendorMedia.Add(x));
-            if (VendorMedia[0] != null) Image = VendorMedia[0];
+            var vendorMedia = VendorController.Instance.GetVendorMedia(Vendor.Id);
+            Image = vendorMedia.logoImage;
         }
 
         private void LoadQrCode()
@@ -84,18 +91,11 @@ namespace CouponBuddy.ViewModels.VendorScreen
             }
         }
 
-        public void NextImage()
+        public void CouponButtonClicked(int couponId)
         {
-            currentIndex++;
-            if (currentIndex >= VendorMedia.Count) currentIndex = 0;
-            Image = VendorMedia[currentIndex];
-        }
-
-        public void PreviousImage()
-        {
-            currentIndex--;
-            if (currentIndex < 0) currentIndex = VendorMedia.Count - 1;
-            Image = VendorMedia[currentIndex];
+            var coupon = Coupons.ToList().Single(x => x.Id == couponId);
+            CouponView view = new CouponView(coupon);
+            MainWindow.Instance.NavigateToPage(view);
         }
     }
 }

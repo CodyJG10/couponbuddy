@@ -50,7 +50,8 @@ namespace CouponBuddy.ViewModels.VendorListScreen
             }
             else
             {
-                img = new BitmapImage(new Uri("/Assets/404.png", UriKind.Relative));
+                //img = new BitmapImage(new Uri("/Assets/404.png", UriKind.Relative));
+                img = null;
             }
 
             LogoSource = img;

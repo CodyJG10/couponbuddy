@@ -10,15 +10,24 @@
       Title="VendorScreen"
       Background="White">
 
+    <Page.Resources>
+        <Style x:Key="CouponButton" TargetType="Button">
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Height" Value="150"/>
+            <Setter Property="Margin" Value="25" />
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+    </Page.Resources>
+
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Assets/background_1.png" Stretch="UniformToFill"/>
         </Grid.Background>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="130"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="33"/>
+            <RowDefinition Height="113*"/>
+            <RowDefinition Height="136*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -32,6 +41,11 @@
 
         <Grid Grid.Row="1"
                 Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="233*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="*"/>
@@ -42,31 +56,7 @@
                    HorizontalAlignment="Stretch"
                    Stretch="Fill"
                    Grid.Row="0"
-                   Margin="25,0,0,0"/>
-
-            <Grid Grid.Row="1">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <Image Source="/Assets/back.png"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Width="50"
-                       Height="50"
-                       MouseDown="BtnPrevious_Click"
-                       Margin="50,0,0,0"/>
-
-                <Image Source="/Assets/play.png"
-                       Grid.Column="1"
-                       HorizontalAlignment="Right"
-                       Width="50"
-                       Height="50"
-                       MouseDown="BtnNext_Click"
-                       Margin="0,0,50,0"/>
-            </Grid>
+                   Margin="17,0,0,0" Grid.ColumnSpan="2" Grid.Column="1"/>
 
         </Grid>
 
@@ -104,8 +94,21 @@
                 <TextBlock Text="{Binding Vendor.Description}"
                         FontSize="35"
                         Foreground="{StaticResource FONT_COLOR}"
-                        TextWrapping="WrapWithOverflow"/>
+                        TextWrapping="WrapWithOverflow" Width="1080" Height="87"/>
             </Label>
+
+            <ListView ItemsSource="{Binding Coupons}"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding Title}"
+                                Style="{StaticResource CouponButton}"
+                                Click="Button_Click"
+                                Tag="{Binding Id}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
         </StackPanel>
 

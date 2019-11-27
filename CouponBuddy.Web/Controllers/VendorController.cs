@@ -77,67 +77,64 @@ namespace CouponBuddy.Web.Controllers
             await _fileManager.UploadFile(files[0], "inactive", _vendor);
             return RedirectToAction("ManageContent");
         }
+        #region Coupons
 
-        [HttpPost("UploadHome")]
-        public async Task<IActionResult> UploadHome(List<IFormFile> files)
+        [HttpGet("CreateCoupon")]
+        public IActionResult ViewCreateCoupon()
         {
-            if (files.Count == 0) return Content("Invalid File");
-            await _fileManager.UploadFile(files[0], "home", _vendor);
+            return View("CreateCoupon");
+        }
 
-            //var username = User.Identity.Name;
-            //var vendor = _context.Vendors.Single(x => x.Username == username);
-            //var userId = _userManager.FindByNameAsync(username).GetAwaiter().GetResult().Id;
+        [HttpGet("DeleteCoupon")]
+        public IActionResult ViewDeleteCoupon(int id)
+        {
+            var coupon = _context.VendorCoupons.Single(x => x.Id == id);
+            return View("DeleteCoupon", coupon);
+        }
 
-            //if (_context.Ads.SingleOrDefault(x => x.VendorId == vendor.Id) != null)
-            //{
-            //    _context.Remove(_context.Ads.Single(x => x.VendorId == vendor.Id));
-            //}
+        [HttpGet("EditCoupon")]
+        public IActionResult ViewEditCoupon(int id)
+        {
+            var coupon = _context.VendorCoupons.Single(x => x.Id == id);
+            return View("EditCoupon", coupon);
+        }
 
-            //Ad ad = new Ad()
-            //{
-            //    ContentType = "PNG",
-            //    FileName = vendor.Name.ToLower().Replace(" ", "") + ":home.png",
-            //    VendorId = vendor.Id
-            //};
+        [HttpGet("Coupons")]
+        public IActionResult ViewCoupons()
+        {
+            var coupons = _context.VendorCoupons.Where(x => x.VendorId == _vendor.Id);
+            return View("ViewCoupons", coupons);
+        }
 
-            //vendor.Ad = ad;
+        [HttpPost("CreateCoupon")]
+        public async Task<IActionResult> CreateCoupon(VendorCoupon coupon)
+        {
 
-            //_context.Update(vendor);
-            //_context.SaveChanges();
-
+            coupon.IsActive = true;
+            coupon.VendorId = _vendor.Id;
+            _context.VendorCoupons.Add(coupon);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("ManageContent");
+        }
+        
+        [HttpPost("EditCoupon")]
+        public async Task<IActionResult> EditCoupon(VendorCoupon coupon)
+        {
+            _context.Update(coupon);
+            await _context.SaveChangesAsync();
             return RedirectToAction("ManageContent");
         }
 
-        [HttpPost("UploadMedia")]
-        public async Task<IActionResult> UploadMedia(List<IFormFile> files)
+        [HttpPost("DeleteCoupon")]
+        public async Task<IActionResult> DeleteCoupon(int id)
         {
-            if (files.Count != 1) return Content("Invalid File");
-            IFormFile file = files[0];
-            Guid guid = Guid.NewGuid();
-            await _fileManager.UploadFile(file, guid.ToString(), _vendor);
-            VendorMedia media = new VendorMedia()
-            {
-                Guid = guid,
-                VendorId = _vendor.Id
-            };
-            if (_vendor.VendorMedia == null) _vendor.VendorMedia = new List<VendorMedia>();
-            _context.VendorMedia.Add(media);
-            _vendor.VendorMedia.Add(media);
-
-            _context.SaveChanges();
-
+            var coupon = _context.VendorCoupons.Single(x => x.Id == id);
+            _context.Remove(coupon);
+            await _context.SaveChangesAsync();
             return RedirectToAction("ManageContent");
         }
 
-        [HttpGet("DeleteCoverImage/{mediaId}")]
-        public IActionResult DeleteCoverImage([FromRoute]int mediaId)
-        {
-            var vendorMedia = _context.VendorMedia.Where(x => x.VendorId == _vendor.Id);
-            var media = vendorMedia.ToList()[mediaId];
-            _context.Remove(media);
-            _context.SaveChanges();
-            return RedirectToAction("Index", "Home");
-        }
+        #endregion
 
         #endregion
 

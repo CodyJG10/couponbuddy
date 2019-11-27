@@ -17,7 +17,7 @@ namespace CouponBuddy.Api
 
         private void ConnectToClient()
         {
-            string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=CouponBuddy;AccountKey=W7K57XumvbroU0fIwdlOz/8da9Y+YXAkprA/n9UqtSu/j+o4uE9ehojmzwhcyZ52LXeqXJj0IflQYV5JHt7EtQ==;EndpointSuffix=core.windows.net";
+            string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=couponbuddy;AccountKey=HUT5dj8HeOL2EGVf116GjO3y/EcP2Yf+IfFjFwVH/WH3WDKv3lNjmwuyqHftL48/7Wh+7EfTTG0Xqt1dwX4OgA==;EndpointSuffix=core.windows.net";
             CloudStorageAccount account = CloudStorageAccount.Parse(storageConnectionString);
             _client = account.CreateCloudBlobClient();
         }

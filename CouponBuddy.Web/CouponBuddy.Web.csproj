@@ -25,6 +25,10 @@
     <Compile Remove="Data\Migrations\20190906034643_AddedVendorId.Designer.cs" />
     <Compile Remove="Data\Migrations\20190906040003_AddedIdentityAnnotation.cs" />
     <Compile Remove="Data\Migrations\20190906040003_AddedIdentityAnnotation.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191126162040_AddedCouponData.cs" />
+    <Compile Remove="Data\Migrations\20191126162040_AddedCouponData.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191126162731_AddedVendorCoupon.cs" />
+    <Compile Remove="Data\Migrations\20191126162731_AddedVendorCoupon.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,7 +45,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.8" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.1.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
   </ItemGroup>
 

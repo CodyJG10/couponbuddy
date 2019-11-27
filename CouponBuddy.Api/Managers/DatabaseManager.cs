@@ -89,5 +89,12 @@ namespace CouponBuddy.Api.Managers
             var content = await result.Content.ReadAsStringAsync();
             Console.WriteLine(content);
         }
+
+        public async Task<IEnumerable<VendorCoupon>> GetVendorCoupons(int vendorId)
+        {
+            var result = await _client.GetAsync("coupons/" + vendorId);
+            var content = await result.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<IEnumerable<VendorCoupon>>(content);
+        }
     }
 }
