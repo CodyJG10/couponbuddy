@@ -97,18 +97,24 @@
                         TextWrapping="WrapWithOverflow" Width="1080" Height="87"/>
             </Label>
 
-            <ListView ItemsSource="{Binding Coupons}"
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Center">
-                <ListView.ItemTemplate>
+            <ItemsControl ItemsSource="{Binding Coupons}"
+                          HorizontalAlignment="Center">
+                <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Button Content="{Binding Title}"
                                 Style="{StaticResource CouponButton}"
                                 Click="Button_Click"
-                                Tag="{Binding Id}"/>
+                                Tag="{Binding Id}"
+                                Background="LightBlue"
+                                BorderBrush="LightGray"/>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
 
         </StackPanel>
 

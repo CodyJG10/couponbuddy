@@ -60,7 +60,7 @@ namespace CouponBuddy.Web.Controllers
         [HttpGet("Coupons/{id}")]
         public IEnumerable<VendorCoupon> GetCoupons([FromRoute]int id)
         {
-            var coupons = _context.VendorCoupons.Where(x => x.Id == id);
+            var coupons = _context.VendorCoupons.Where(x => x.VendorId == id);
             return coupons;
         }
 
