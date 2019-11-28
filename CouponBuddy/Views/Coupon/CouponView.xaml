@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:BrochureBuddy.Views.Coupon"
       xmlns:sharedviews="clr-namespace:CouponBuddy.Views.Shared"
       mc:Ignorable="d" 
-      d:DesignHeight="820" d:DesignWidth="1920"
+      d:DesignHeight="1720" d:DesignWidth="1080"
       Title="CouponView"
       Background="White">
 
@@ -34,15 +34,15 @@
                                 HorizontalAlignment="Left" 
                                 Grid.Row="0"/>
 
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
             <Label Content="{Binding Coupon.Title}"
                    Style="{StaticResource InformationLabel}"/>
             <Label Content="{Binding Coupon.Description}"
                    Style="{StaticResource InformationLabel}"/>
             <Label Content="{Binding Coupon.Instructions}"
                    Style="{StaticResource InformationLabel}"/>
-         
-            <StackPanel VerticalAlignment="Bottom">
+
+            <StackPanel>
                 <StackPanel HorizontalAlignment="Center"
                         Margin="0,15">
                     <StackPanel Orientation="Horizontal">
@@ -58,10 +58,12 @@
                              x:Name="txtEmail"/>
                     </StackPanel>
                     <Button Content="Send"
-                        x:Name="btnSendEmail"
-                        Click="BtnSendEmail_Click"
-                        Height="75"
-                        FontSize="45"/>
+                            x:Name="btnSendEmail"
+                            Click="BtnSendEmail_Click"
+                            Height="75"
+                            Width="250"
+                            Margin="0, 25"
+                            FontSize="45"/>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Center"
                         Margin="0,30">
@@ -79,19 +81,14 @@
                              x:Name="txtPhoneNumber"/>
                     </StackPanel>
                     <Button Content="Send"
-                        x:Name="btnSendText"
-                        Click="BtnSendText_Click"
-                        Height="75"
-                        FontSize="45"/>
+                            x:Name="btnSendText"
+                            Click="BtnSendText_Click"
+                            Height="75"
+                            Width="250"
+                            Margin="0, 25"
+                            FontSize="45"/>
                 </StackPanel>
             </StackPanel>
-
-            <!--<Label Content="Test"
-                   Style="{StaticResource InformationLabel}"/>
-            <Label Content="Test"
-                   Style="{StaticResource InformationLabel}"/>
-            <Label Content="Test"
-                   Style="{StaticResource InformationLabel}"/>-->
 
         </StackPanel>
     </Grid>

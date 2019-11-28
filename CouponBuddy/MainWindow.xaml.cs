@@ -47,8 +47,8 @@ namespace CouponBuddy
                 Console.WriteLine("Test");
             }
             (ServiceLocator.Current.GetService(typeof(INavigationService)) as INavigationService).SetMainFrame(frameMain);
-            WindowState = WindowState.Maximized;
-            WindowStyle = WindowStyle.None;
+            //WindowState = WindowState.Maximized;
+            //WindowStyle = WindowStyle.None;
             Page page = new LoadingScreen();
             frameMain.Navigate(page);
         }

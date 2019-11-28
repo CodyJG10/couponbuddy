@@ -6,13 +6,13 @@
       xmlns:local="clr-namespace:CouponBuddy.Views.AdvertiseWithUs"
       xmlns:sharedviews="clr-namespace:CouponBuddy.Views.Shared"
       mc:Ignorable="d" 
-      d:DesignHeight="780" d:DesignWidth="1920"
+      d:DesignHeight="1720" d:DesignWidth="1080"
       Background="White"
       Title="AdvertiseWithUs">
 
     <Page.Resources>
         <Style x:Key="mainLabel" TargetType="Label">
-            <Setter Property="FontSize" Value="65"/>
+            <Setter Property="FontSize" Value="45"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontStyle" Value="Normal"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
