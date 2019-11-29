@@ -16,6 +16,17 @@ namespace CouponBuddy.Entities
         [CategoryInfo("Entertainment", "Entertainment")]
         public const int ENTERTAINMENT = 4;
 
+        [CategoryInfo("Specialties", "Gifts & Specialties")]
+        public const int SPECIALTIES = 5;
+        [CategoryInfo("Boutiques", "Boutiques")]
+        public const int BOUTIQUES = 6;
+        [CategoryInfo("Dessert", "Specialty Food & Drink")]
+        public const int DESSERTS = 7;
+        [CategoryInfo("Services", "Services")]
+        public const int SERVICES = 8;
+        [CategoryInfo("Marina", "Marina")]
+        public const int MARINA = 9;
+
         public static CategoryInfo GetCategory(int category)
         {
             var fields = typeof(Categories).GetFields();

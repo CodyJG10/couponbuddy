@@ -44,21 +44,29 @@
 
 
             <local:CategoryButtonView Style="{StaticResource btn}"
-                                    CategoryID="1"
-                                    MouseLeftButtonDown="CategoryButtonClicked"
-                                    ButtonImage="/Assets/food.jpg"/>
-
+                                      CategoryID="6"
+                                      MouseLeftButtonDown="CategoryButtonClicked"
+                                      ButtonImage="/Assets/Boutique.jpg"/>
+    
             <local:CategoryButtonView Style="{StaticResource btn}"
-                                        CategoryID="2"
+                                        CategoryID="1"
                                         MouseLeftButtonDown="CategoryButtonClicked"
-                                        ButtonImage="/Assets/beach.jpg"/>
+                                        ButtonImage="/Assets/food.jpg"/>
             <local:CategoryButtonView Style="{StaticResource btn}"
-                                        CategoryID="3"
-                                        ButtonImage="/Assets/activities.jpg"
+                                        CategoryID="7"
+                                        ButtonImage="/Assets/IceCream.jpg"
                                         MouseLeftButtonDown="CategoryButtonClicked"/>
             <local:CategoryButtonView Style="{StaticResource btn}"
-                                        CategoryID="4"
-                                        ButtonImage="/Assets/entertainment.jpg"
+                                        CategoryID="8"
+                                        ButtonImage="/Assets/Salon.jpg"
+                                        MouseLeftButtonDown="CategoryButtonClicked"/>
+            <local:CategoryButtonView Style="{StaticResource btn}"
+                                        CategoryID="9"
+                                        ButtonImage="/Assets/Marina.jpg"
+                                        MouseLeftButtonDown="CategoryButtonClicked"/>
+            <local:CategoryButtonView Style="{StaticResource btn}"
+                                        CategoryID="5"
+                                        ButtonImage="/Assets/Gifts.jpg"
                                         MouseLeftButtonDown="CategoryButtonClicked"/>
         </WrapPanel>
 

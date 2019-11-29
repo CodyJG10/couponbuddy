@@ -12,17 +12,16 @@ namespace BrochureBuddy.Util
     {
         public static void SendEmail(VendorCoupon coupon, string destination)
         {
-            using (SmtpClient smtpClient = new SmtpClient("mail.pg-technologies.com", 465))
+            string host = CouponBuddy.Properties.Resources.EMAIL_HOST;
+            string password = CouponBuddy.Properties.Resources.EMAIL_PASSWORD;
+            string from = CouponBuddy.Properties.Resources.EMAIL_FROM;
+            string user = CouponBuddy.Properties.Resources.EMAIL_USER;
+            using (SmtpClient smtpClient = new SmtpClient(host, 465))
             {
-                smtpClient.Credentials = new System.Net.NetworkCredential("coupons@pg-technologies.com", "Airplane10");
+                smtpClient.Credentials = new System.Net.NetworkCredential(user, password);
                 smtpClient.UseDefaultCredentials = true;
                 smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtpClient.EnableSsl = true;
-
-                //var from  = new MailAddress("coupons@pg-technologies.com", "PG Technologies Coupon");
-
-                var to = new MailAddressCollection();
-                to.Add(new MailAddress(destination));
 
                 string subject = "E-Coupon Delivered By PG Technologies";
 
@@ -34,10 +33,17 @@ namespace BrochureBuddy.Util
                 bodyStringBuilder.AppendLine(coupon.Instructions);
                 string body = bodyStringBuilder.ToString();
 
-                using (MailMessage mail = new MailMessage("coupons@pg-technologies.com", destination, subject, body))
+                using (MailMessage mail = new MailMessage(from, destination, subject, body))
                 {
                     //smtpClient.SendAsync(mail, null);
-                    smtpClient.Send(mail);
+                    try
+                    {
+                        smtpClient.Send(mail);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
                 }
             }
         }

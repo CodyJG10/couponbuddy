@@ -11,9 +11,9 @@ namespace BrochureBuddy.Util
 {
     public static class TextSender
     {
-        const string accountSid = "ACb758ac931310f20c39f7e0d7451ae3b4";
-        const string authToken = "523ab04082e6a42db840cc39b3b7d242";
-        const string from = "+19124809477";
+        private static string accountSid = CouponBuddy.Properties.Resources.TEXT_ACCOUNT_SID;
+        private static string authToken = CouponBuddy.Properties.Resources.TEXT_ACCOUNT_TOKEN;
+        private static string from = CouponBuddy.Properties.Resources.TEXT_ACCOUNT_FROM;
 
         private static bool isInitialized = false;
 
