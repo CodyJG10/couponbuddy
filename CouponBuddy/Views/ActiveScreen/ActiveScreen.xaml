@@ -5,14 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CouponBuddy.Views.ActiveScreen"
       mc:Ignorable="d" 
-      d:DesignHeight="780" d:DesignWidth="1920"
+      d:DesignHeight="1720" d:DesignWidth="1080"
       Title="ActiveScreen"
       xmlns:banner="clr-namespace:CouponBuddy.Views.Shared">
 
     <Page.Resources>
         <Style x:Key="btn" TargetType="local:CategoryButtonView">
-            <Setter Property="Width" Value="300"/>
-            <Setter Property="Height" Value="300"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="250"/>
             <Setter Property="Margin" Value="25,25,25,25" />
         </Style>
     </Page.Resources>
