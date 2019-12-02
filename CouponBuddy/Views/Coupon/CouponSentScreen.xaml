@@ -1,0 +1,33 @@
+﻿<Page x:Class="CouponBuddy.Views.Coupon.CouponSentScreen"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CouponBuddy.Views.Coupon"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CouponSentScreen">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="{StaticResource BACKGROUND_IMAGE}" Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <StackPanel VerticalAlignment="Center">
+            <Label Content="Your coupon has been succesfully sent" 
+                   VerticalAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   FontSize="45"
+                   Foreground="White"/>
+
+            <Label Content="You will return to the home screen in a few seconds..."
+                   VerticalAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   FontSize="25"
+                   Foreground="Purple"/>
+        </StackPanel>
+
+    </Grid>
+</Page>

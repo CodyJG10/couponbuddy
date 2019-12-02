@@ -19,7 +19,9 @@
             <Brush x:Key="FONT_COLOR">White</Brush>
 
             <sys:Double x:Key="FONT_SIZE">50</sys:Double>
-            
+
+            <ImageSource x:Key="BACKGROUND_IMAGE">/Assets/background_1.png</ImageSource>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

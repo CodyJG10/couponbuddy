@@ -22,7 +22,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Assets/background_1.png" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="{StaticResource BACKGROUND_IMAGE}" Stretch="UniformToFill"/>
         </Grid.Background>
 
         <Grid.RowDefinitions>
@@ -34,7 +34,7 @@
                                 HorizontalAlignment="Left" 
                                 Grid.Row="0"/>
 
-        <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+        <StackPanel Grid.Row="1" VerticalAlignment="Stretch">
             <Label Content="{Binding Coupon.Title}"
                    Style="{StaticResource InformationLabel}"/>
             <Label Content="{Binding Coupon.Description}"
@@ -51,7 +51,6 @@
                            FontSize="45"
                            Margin="0,0,50,0"/>
                         <TextBox Width="450"
-                             Text="codyjg10@gmail.com"
                              FontSize="35"
                              HorizontalContentAlignment="Center"
                              VerticalContentAlignment="Center"
@@ -74,7 +73,6 @@
                            Margin="0,0,50,0"/>
                         <TextBox Width="450"
                              FontSize="45"
-                             Text="6093161245"
                              HorizontalContentAlignment="Center"
                              VerticalContentAlignment="Center"
                             

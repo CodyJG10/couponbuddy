@@ -21,7 +21,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Assets/background_1.png" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="{StaticResource BACKGROUND_IMAGE}" Stretch="UniformToFill"/>
         </Grid.Background>
 
         <Grid.RowDefinitions>

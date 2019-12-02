@@ -211,6 +211,9 @@
     <Compile Include="Views\AdvertiseWithUs\AdvertiseWithUs.xaml.cs">
       <DependentUpon>AdvertiseWithUs.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Coupon\CouponSentScreen.xaml.cs">
+      <DependentUpon>CouponSentScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Coupon\CouponView.xaml.cs">
       <DependentUpon>CouponView.xaml</DependentUpon>
     </Compile>
@@ -258,6 +261,10 @@
     <Page Include="Views\AdvertiseWithUs\AdvertiseWithUs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Coupon\CouponSentScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Coupon\CouponView.xaml">
       <SubType>Designer</SubType>
