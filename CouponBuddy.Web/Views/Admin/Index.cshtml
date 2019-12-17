@@ -1,15 +1,40 @@
-﻿<table class="table">
+﻿@*<table class="table">
     <tbody>
-        <tr>
-            <td>
-                <a asp-action="CreateRole" class="btn">Create Role</a>
-                <a asp-action="AddUserToRole" class="btn">Add Users To Role</a>
-                <a asp-action="ViewLocations" class="btn">View Locations</a>
-                <a asp-action="CreateVendor" class="btn">Create Vendor</a>
-                <a asp-action="CreateLocationManager" class="btn">Create Location Manager</a>
-                <a asp-action="AddVendorToLocation" class="btn">Add Vendor To Location</a>
-                <a asp-action="VendorsList" class="btn">View All Vendors</a>
-            </td>
-        </tr>
+    <tr>
+        <td>
+            <a asp-action="CreateRole" class="btn">Create Role</a>
+            <a asp-action="AddUserToRole" class="btn">Add Users To Role</a>
+            <a asp-action="ViewLocations" class="btn">View Locations</a>
+            <a asp-action="CreateVendor" class="btn">Create Vendor</a>
+            <a asp-action="CreateLocationManager" class="btn">Create Location Manager</a>
+            <a asp-action="AddVendorToLocation" class="btn">Add Vendor To Location</a>
+            <a asp-action="VendorsList" class="btn">View All Vendors</a>
+        </td>
+    </tr>
     </tbody>
-</table>
+</table>*@
+
+<div class="container">
+    <div class="col-md-4">
+        <p class="h1 text-center">Users</p>
+        <div class="btn-group-vertical center-block">
+            <a asp-action="CreateRole" class="btn">Create Role</a>
+            <a asp-action="AddUserToRole" class="btn">Add Users To Role</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <p class="h1 text-center">Vendors</p>
+        <div class="btn-group-vertical center-block">
+            <a asp-action="CreateVendor" class="btn">Create Vendor</a>
+            <a asp-action="VendorsList" class="btn">View All Vendors</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <p class="h1 text-center">Locations</p>
+        <div class="btn-group-vertical center-block">
+            <a asp-action="ViewLocations" class="btn">View Locations</a>
+            <a asp-action="CreateLocationManager" class="btn">Create Location Manager</a>
+            <a asp-action="AddVendorToLocation" class="btn">Add Vendor To Location</a>
+        </div>
+    </div>
+</div>
