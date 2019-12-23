@@ -1,0 +1,18 @@
+﻿@using CouponBuddy.Entities;
+@using CouponBuddy.Web.Data
+@inject ApplicationDbContext context
+@model VendorCoupon
+
+@{
+    ViewData["Title"] = "Coupon";
+}
+
+<h2>Coupon</h2>
+@{
+    var vendor = context.Vendors.Single(x => x.Id == Model.VendorId);
+}
+<h1 class="center-block">Your Coupon:</h1>
+<h2 class="center-block">@vendor.Name</h2>
+<h2 class="center-block">@Model.Title</h2>
+<h3 class="center-block">@Model.Description</h3>
+<h4 class="center-block">Instructions: @Model.Instructions</h4>
