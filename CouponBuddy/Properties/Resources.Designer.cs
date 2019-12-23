@@ -133,6 +133,15 @@ namespace CouponBuddy.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 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.
+        /// </summary>
+        internal static string SENDGRID_EMAIL_APIKEY {
+            get {
+                return ResourceManager.GetString("SENDGRID_EMAIL_APIKEY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to +19124809477.
         /// </summary>
         internal static string TEXT_ACCOUNT_FROM {

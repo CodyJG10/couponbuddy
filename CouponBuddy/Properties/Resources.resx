@@ -141,6 +141,9 @@
   <data name="LOCATION_ID" xml:space="preserve">
     <value>62885dd9-0d90-420e-9141-ecbbd8ed5c62</value>
   </data>
+  <data name="SENDGRID_EMAIL_APIKEY" xml:space="preserve">
+    <value>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</value>
+  </data>
   <data name="TEXT_ACCOUNT_FROM" xml:space="preserve">
     <value>+19124809477</value>
   </data>

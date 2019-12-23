@@ -28,12 +28,14 @@ namespace CouponBuddy
         public App()
         {
             InitializeComponent();
+            Console.WriteLine("Attempting To Cnofigure Dependency Services");
             ConfigureServices();
             MainWindow = new MainWindow();
         }
 
         private void ConfigureServices()
         {
+            Console.WriteLine("Configuring Dependency Services");
             string baseUrl = CouponBuddy.Properties.Resources.BASE_URL;
             var builder = new ContainerBuilder();
 
@@ -41,10 +43,12 @@ namespace CouponBuddy
                  .WithParameter(new TypedParameter(typeof(string), baseUrl))
                  .As<IDatabaseManager>()
                  .SingleInstance();
+            Console.WriteLine("Registered Database Manager");
 
             builder.RegisterType<BitmapImageLoader>()
                  .AsSelf()
                  .SingleInstance();
+            Console.WriteLine("Registered Image Loader");
 
             builder.RegisterType<Navigation.NavigationService>()
                 .As<INavigationService>()

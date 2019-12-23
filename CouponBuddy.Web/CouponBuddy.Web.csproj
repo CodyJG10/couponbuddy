@@ -6,6 +6,14 @@
     <UserSecretsId>aspnet-ContractorTownship.Web-8013DF69-E9CB-4876-BAFE-AD5808619275</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="Data\Migrations\20190702001623_UserUpdate.cs" />
     <Compile Remove="Data\Migrations\20190702001623_UserUpdate.Designer.cs" />
