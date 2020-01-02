@@ -53,6 +53,7 @@ namespace BrochureBuddy.ViewModels.Coupon
         public void SendText(string number)
         {
             TextSender.SendText(Coupon, number);
+            MainWindow.Instance.NavigateToPage(new CouponSentScreen());
         }
 
         private void LoadQrImage()
