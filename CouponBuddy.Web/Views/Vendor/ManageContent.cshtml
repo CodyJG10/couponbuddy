@@ -13,17 +13,22 @@
 <form method="post" enctype="multipart/form-data" asp-action="UploadLogo">
     <div class="form-group">
 
-        <h1 class="form-control">Logo</h1>
+        <h1 class="h3 text-center">Logo</h1>
 
-        <img src="@Model.LogoImageUrl" width="250" height="250" />
+        <img src="@Model.LogoImageUrl"
+             width="250"
+             height="250"
+             class="img-responsive center-block"/>
 
         <div>
-            <p>Upload Logo Image Here</p>
-            <input type="file" name="files" />
+            <p class="text-center">Upload Logo Image Here</p>
+            <input type="file"
+                   class="center-block text-primary"
+                   name="files" />
         </div>
 
         <div>
-            <input class="btn btn-primary" type="submit" value="Upload" />
+            <input class="btn btn-primary center-block" type="submit" value="Upload" />
         </div>
 
     </div>
@@ -32,16 +37,21 @@
 <form method="post" enctype="multipart/form-data" asp-action="UploadInactive">
     <div class="form-group">
 
-        <h3 class="form-control">Inactive Ad</h3>
-        <img src="@Model.InactiveImageUrl" width="250" height="250" />
+        <h3 class="h3 text-center">Inactive Ad</h3>
+        <img src="@Model.InactiveImageUrl"
+             width="250" 
+             height="250" 
+             class="img-responsive center-block"/>
 
         <div>
-            <p>Upload Inactive Image Here</p>
-            <input type="file" name="files" />
+            <p class="text-center">Upload Inactive Image Here</p>
+            <input type="file"
+                   class="center-block text-primary"
+                   name="files" />
         </div>
 
         <div>
-            <input class="btn btn-primary" type="submit" value="Upload" />
+            <input class="btn btn-primary center-block" type="submit" value="Upload" />
         </div>
 
     </div>

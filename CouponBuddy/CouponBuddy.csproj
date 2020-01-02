@@ -74,10 +74,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>F27CB8ABE85003D98053D753A4BCF0CF4F53E245</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>A4961A7EBC5356A7D786AEE9E81C1244EB3FF932</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>CouponBuddy_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>BrochureBuddy_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>

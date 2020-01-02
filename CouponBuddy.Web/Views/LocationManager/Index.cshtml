@@ -7,16 +7,22 @@
 
 <h2>Index</h2>
 
-<a asp-action="AddVendor" class="control control-label">Add Vendor To Location</a>
-<a asp-action="CreateAd" class="control control-label">Create Ad</a>
-<a asp-action="ViewAds" class="control control-label">View Ads</a>
-
+<div class="container">
+    <div class="col-lg-6">
+        <p class="h1 text-center">Options</p>
+        <div class="btn-group-vertical center-block">
+            <a asp-action="AddVendor" class="btn btn-primary">Add Vendor To Location</a>
+            <a asp-action="CreateAd" class="btn btn-primary">Create Ad</a>
+            <a asp-action="ViewAds" class="btn btn-primary">View Ads</a>
+        </div>
+    </div>
+</div>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                <label class="control-label control">Name</label>
+                <label class="control-label">Name</label>
             </th>
             <th></th>
         </tr>

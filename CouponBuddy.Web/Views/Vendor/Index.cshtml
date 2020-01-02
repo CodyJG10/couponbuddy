@@ -10,9 +10,9 @@
     <div class="col-lg-6">
         <p class="h1 text-center">Options</p>
         <div class="btn-group-vertical center-block">
-            <a asp-action="ManageContent" class="btn btn-default">Manage Content</a>
-            <a asp-action="ViewEdit" class="btn btn-default">Edit Info</a>
-            <a asp-action="Analytics" class="btn btn-default">View Analytics</a>
+            <a asp-action="ManageContent" class="btn btn-primary">Manage Content</a>
+            <a asp-action="ViewEdit" class="btn btn-primary">Edit Info</a>
+            <a asp-action="Analytics" class="btn btn-primary">View Analytics</a>
         </div>
     </div>
 </div>
@@ -34,10 +34,6 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
-                @*<td>
-                    <a asp-action="VendorDetails" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="RemoveVendor" asp-route-id="@item.Id">Remove</a>
-                </td>*@
             </tr>
         }
     </tbody>
