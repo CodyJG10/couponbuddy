@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Azure.Storage.Blobs.Specialized;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -16,15 +17,18 @@ namespace CouponBuddy.Api
             {
                 StorageManager manager = new StorageManager();
                 var blockBlob = manager.GetClient()
-                                    .GetContainerReference(container)
-                                    .GetBlockBlobReference(fileName);
-                await blockBlob.FetchAttributesAsync();
-                long fileByteLength = blockBlob.Properties.Length;
+                                    .GetBlobContainerClient(container)
+                                    .GetBlockBlobClient(fileName);
+
+                var properties = blockBlob.GetProperties();
+                long fileByteLength = properties.Value.ContentLength;
                 byte[] byteArray = new byte[fileByteLength];
-                await blockBlob.DownloadToByteArrayAsync(byteArray, 0);
+                MemoryStream stream = new MemoryStream();
+                await blockBlob.DownloadToAsync(stream);
+                byteArray = stream.ToArray();
                 return byteArray;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }

@@ -38,7 +38,7 @@ namespace CouponBuddy.ViewModels.LoadingScreen
 
             var vendors = await db.GetVendors(locationId).ConfigureAwait(true);
 
-            await AdManager.Instance.LoadAds().ConfigureAwait(true);
+            await AdManager.Instance.LoadAds();
             await VendorController.Instance.LoadVendors(vendors.ToList()).ConfigureAwait(true);
 
             Console.WriteLine("Loaded all vendors and location ads");

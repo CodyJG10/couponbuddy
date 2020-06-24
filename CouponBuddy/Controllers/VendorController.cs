@@ -51,7 +51,6 @@ namespace CouponBuddy.Controllers
 
         public async Task<Task> LoadVendors(List<Vendor> vendorsToAdd)
         {
-            var vendorMediaObjectsList = await _db.GetVendorMedia(); 
             BitmapImageLoader imgLoader = new BitmapImageLoader();
             foreach (var vendor in vendorsToAdd)
             {

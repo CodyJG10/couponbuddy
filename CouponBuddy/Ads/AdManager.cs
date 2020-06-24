@@ -45,7 +45,7 @@ namespace CouponBuddy.Ads
                 Location location = await _db.GetLocation(locationId).ConfigureAwait(true);
                 string container = VendorToContainer.GetContainerName(location.Name);
                 string fileName = ad.Name;
-                var img = await imgLoader.LoadImageSource(container, fileName).ConfigureAwait(true);
+                var img = await imgLoader.LoadImageSource(container, fileName);
                 adImages.Add(img);
             }
 
