@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Extras.CommonServiceLocator;
-using BrochureBuddy.Util;
+using CouponBuddy.Properties;
+using CouponBuddy.Util;
 using CommonServiceLocator;
 using CouponBuddy.Api;
 using CouponBuddy.Api.Interfaces;
@@ -25,11 +26,20 @@ namespace CouponBuddy
     {
         public IContainer Container { get; set; }
 
+        public bool IsFirstLaunch { get; private set; }
+
         public App()
         {
             InitializeComponent();
             ConfigureServices();
-            MainWindow = new MainWindow();
+
+            IsFirstLaunch = (bool)Settings.Default["FIRST_LAUNCH"];
+
+            if (!IsFirstLaunch) 
+            {
+                ConfigureServices();
+                MainWindow = new MainWindow();
+            }
         }
 
         private void ConfigureServices()
@@ -37,14 +47,19 @@ namespace CouponBuddy
             string baseUrl = CouponBuddy.Properties.Resources.BASE_URL;
             var builder = new ContainerBuilder();
 
+            string username = Settings.Default.DATABASE_USERNAME;
+            string password = Settings.Default.DATABASE_PASSWORD;
             builder.RegisterType<DatabaseManager>()
-                 .WithParameter(new TypedParameter(typeof(string), baseUrl))
-                 .As<IDatabaseManager>()
-                 .SingleInstance();
+                .WithParameter(new NamedParameter("database", baseUrl))
+                .WithParameter(new NamedParameter("username", username))
+                .WithParameter(new NamedParameter("password", password))
+                .As<IDatabaseManager>()
+                .SingleInstance();
 
-            builder.RegisterType<BitmapImageLoader>()
-                 .AsSelf()
-                 .SingleInstance();
+            string storageConnectionString = CouponBuddy.Properties.Resources.STORAGE_CONNECTION_STRING;
+            builder.RegisterType<ImageLoader>()
+                .AsSelf()
+                .WithParameter(new NamedParameter("connectionString", storageConnectionString));
 
             builder.RegisterType<Navigation.NavigationService>()
                 .As<INavigationService>()

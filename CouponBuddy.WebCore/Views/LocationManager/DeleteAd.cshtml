@@ -1,0 +1,32 @@
+﻿@model CouponBuddy.Entities.LocationAd
+
+@{
+    ViewData["Title"] = "DeleteAd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+h3>Are you sure you want to delete this ad?</h3>
+<div>
+    <h4>Location Ad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LocationId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LocationId)
+        </dd>
+    </dl>
+
+    <form asp-action="DeleteAd">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+

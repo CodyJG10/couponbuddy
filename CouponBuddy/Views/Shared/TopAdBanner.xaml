@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              Background="DarkGray">
     <Grid>
-        <Image Source="{Binding CurrentImage}"/>
+        <Image Source="{Binding CurrentImage}"
+               Stretch="Fill"/>
     </Grid>
 </UserControl>

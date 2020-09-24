@@ -39,7 +39,7 @@ namespace CouponBuddy.ViewModels.AdBanner
         private async void Init()
         {
             Timer timer = new Timer();
-            timer.Interval = 1000 * int.Parse(Properties.Resources.INACTIVE_AD_DURATION);
+            timer.Interval = 1000 * Properties.Settings.Default.INACTIVE_AD_DURATION;
             timer.Elapsed += Timer_Elapsed;
             timer.Start();
         }
@@ -49,9 +49,9 @@ namespace CouponBuddy.ViewModels.AdBanner
             LoadNextAd();
         }
 
-        private async void LoadNextAd()
+        private void LoadNextAd()
         {
-            Console.WriteLine("[AD] Loading next ad");
+            Console.WriteLine("[Ads] Loading next ad");
             var ad = AdManager.Instance.GetNextAd();
             CurrentImage = ad;
         }

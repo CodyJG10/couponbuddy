@@ -1,0 +1,23 @@
+﻿<Window x:Class="CouponBuddy.Admin.FirstLaunch"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CouponBuddy.Admin"
+        mc:Ignorable="d"
+        Title="First Launch Settings" Height="264.201" Width="550.497" ResizeMode="NoResize">
+
+    <Grid>
+        <Label Content="Admin Username" HorizontalAlignment="Left" Margin="38,18,0,0" VerticalAlignment="Top"/>
+        <Label Content="Admin Password" HorizontalAlignment="Left" Margin="38,49,0,0" VerticalAlignment="Top"/>
+        <Label Content="Inactive Screen Ad Duration" HorizontalAlignment="Left" Margin="38,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="Inactivity Timeout" HorizontalAlignment="Left" Margin="38,111,0,0" VerticalAlignment="Top"/>
+        <Label Content="Location ID" HorizontalAlignment="Left" Margin="38,142,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtAdminUsername" HorizontalAlignment="Left" Height="23" Margin="238,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <TextBox x:Name="txtAdminPassword" HorizontalAlignment="Left" Height="23" Margin="238,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" RenderTransformOrigin="0.48,3.259"/>
+        <TextBox x:Name="txtInactiveAdDuration" HorizontalAlignment="Left" Height="23" Margin="238,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <TextBox x:Name="txtInactivityTimeout" HorizontalAlignment="Left" Height="23" Margin="238,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <TextBox x:Name="txtLocationId" HorizontalAlignment="Left" Height="23" Margin="238,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <Button x:Name="ButtonSave" Content="Save" HorizontalAlignment="Left" Height="33" Margin="288,192,0,0" VerticalAlignment="Top" Width="119" Click="ButtonSave_Click"/>
+    </Grid>
+</Window>

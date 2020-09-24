@@ -1,4 +1,7 @@
-﻿using Azure.Storage.Blobs.Specialized;
+﻿using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using Azure.Storage.Blobs.Specialized;
+using CouponBuddy.Util;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,25 +14,41 @@ namespace CouponBuddy.Api
 {
     public class ImageLoader
     {
-        public async Task<byte[]> LoadImage(string container, string fileName)
+        protected BlobServiceClient _client;
+
+        public ImageLoader(string connectionString)
         {
+            _client = new BlobServiceClient(connectionString);
+        }
+
+        public async Task<Uri> DownloadBlob(string container, string fileName, string fileType = "")
+        {
+            Console.WriteLine("[Blob] Downloading blob: " + fileName);
+
+            var blockBlob = _client
+                .GetBlobContainerClient(container)
+                .GetBlobClient(fileName);
+
+            if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "media"))
+            {
+                Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "media");
+            }
             try
             {
-                StorageManager manager = new StorageManager();
-                var blockBlob = manager.GetClient()
-                                    .GetBlobContainerClient(container)
-                                    .GetBlockBlobClient(fileName);
+                BlobDownloadInfo download = await blockBlob.DownloadAsync();
 
-                var properties = blockBlob.GetProperties();
-                long fileByteLength = properties.Value.ContentLength;
-                byte[] byteArray = new byte[fileByteLength];
-                MemoryStream stream = new MemoryStream();
-                await blockBlob.DownloadToAsync(stream);
-                byteArray = stream.ToArray();
-                return byteArray;
+                string filePath = AppDomain.CurrentDomain.BaseDirectory + "media\\" + MediaToFileName.GetFileName(container, fileName) + fileType;
+                using (FileStream downloadFileStream = File.OpenWrite(filePath))
+                {
+                    download.Content.CopyToAsync(downloadFileStream).GetAwaiter().GetResult();
+                    downloadFileStream.Close();
+                }
+
+                return new Uri(filePath);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Console.WriteLine("[Blob] Error encountered when downloading blob: " + e.Message);
                 return null;
             }
         }

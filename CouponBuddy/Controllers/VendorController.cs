@@ -1,4 +1,5 @@
 ﻿using CommonServiceLocator;
+using CouponBuddy.Api;
 using CouponBuddy.Api.Interfaces;
 using CouponBuddy.Entities;
 using CouponBuddy.Util;
@@ -41,32 +42,30 @@ namespace CouponBuddy.Controllers
 
         public struct VendorMedia
         {
-            public ImageSource homeImage;
-            public ImageSource logoImage;
-            public ImageSource inactiveImage;
-            public List<ImageSource> VendorMediaObjects;
+            public Uri homeImage;
+            public Uri logoImage;
+            public Uri inactiveImage;
         }
 
         #region Initialization
 
         public async Task<Task> LoadVendors(List<Vendor> vendorsToAdd)
         {
-            BitmapImageLoader imgLoader = new BitmapImageLoader();
+            var imgLoader = ServiceLocator.Current.GetService(typeof(ImageLoader)) as ImageLoader;
+            Console.WriteLine("[Vendor] attempting to load media for vendors");
             foreach (var vendor in vendorsToAdd)
             {
                 try { 
                     if (vendors.Keys.ToList().Contains(vendor.Id)) continue;
 
-                    Console.WriteLine("Succesfully loaded vendor data for " + vendor.Name);
-
                     string containerName = VendorToContainer.GetContainerName(vendor);
 
                     VendorMedia vendorMedia = new VendorMedia();
 
-                    var inactiveImg = await imgLoader.LoadImageSource(containerName, "inactive");
+                    var inactiveImg = await imgLoader.DownloadBlob(containerName, "inactive");
                     vendorMedia.inactiveImage = inactiveImg;
 
-                    var logoImg = await imgLoader.LoadImageSource(containerName, "logo");
+                    var logoImg = await imgLoader.DownloadBlob(containerName, "logo");
                     vendorMedia.logoImage = logoImg;
 
                     var coupons = await _db.GetVendorCoupons(vendor.Id);
@@ -75,11 +74,11 @@ namespace CouponBuddy.Controllers
                     media.Add(vendor.Id, vendorMedia);
                     vendors.Add(vendor.Id, vendor);
 
-                    Console.WriteLine("Succesfully loaded vendor media for vendor " + vendor.Name);
+                    Console.WriteLine("[Vendor] Succesfully loaded vendor media for vendor " + vendor.Name);
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Caught error while attempting to load vendor " + vendor.Name);
+                    Console.WriteLine("[Vendor] Error loading vendor" + vendor.Name + ": " + e.Message);
                     continue;
                 }
             }

@@ -56,7 +56,7 @@ namespace CouponBuddy.Views.VendorListScreen
         {
             var navigation = ServiceLocator.Current.GetService(typeof(INavigationService)) as INavigationService;
             var database = ServiceLocator.Current.GetService(typeof(IDatabaseManager)) as IDatabaseManager;
-            var locationId = CouponBuddy.Properties.Resources.LOCATION_ID;
+            var locationId = CouponBuddy.Properties.Settings.Default.LOCATION_ID;
             database.AddClick(Vendor, locationId);
             Page page = new VendorScreen.VendorScreen(Vendor);
             navigation.Navigate(page);

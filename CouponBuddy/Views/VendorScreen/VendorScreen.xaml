@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:CouponBuddy.Views.VendorScreen"
       xmlns:sharedviews="clr-namespace:CouponBuddy.Views.Shared"
       mc:Ignorable="d" 
-      d:DesignHeight="780" d:DesignWidth="1920"
+      d:DesignHeight="1720" d:DesignWidth="1080"
       Title="VendorScreen"
       Background="White">
 
@@ -65,23 +65,23 @@
 
             <Label Content="{Binding Vendor.Name}"
                    HorizontalContentAlignment="Center"
-                   FontSize="60"
+                   FontSize="35"
                    Foreground="{StaticResource FONT_COLOR}"/>
 
             <Label Content="{Binding Vendor.Address}"
                    HorizontalContentAlignment="Center"
-                   FontSize="45"
+                   FontSize="25"
                    Foreground="{StaticResource FONT_COLOR}"/>
 
             <Label Content="{Binding Vendor.Phone}"
                    HorizontalContentAlignment="Center"
-                   FontSize="60"
+                   FontSize="35"
                    Foreground="{StaticResource FONT_COLOR}"/>
 
             <Image Source="{Binding QrCodeImage}"
                    Width="150"
                    Height="150"
-                   HorizontalAlignment="Center"
+                   HorizontalAlignment="Stretch"
                    x:Name="imgQrCode"/>
 
         </StackPanel>
@@ -98,7 +98,8 @@
             </Label>
 
             <ItemsControl ItemsSource="{Binding Coupons}"
-                          HorizontalAlignment="Center">
+                          HorizontalAlignment="Center"
+                          Margin="0,0,0,15">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Button Content="{Binding Title}"

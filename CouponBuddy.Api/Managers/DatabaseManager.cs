@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,17 +15,39 @@ namespace CouponBuddy.Api.Managers
     {
         public HttpClient _client;
 
-        public DatabaseManager(string database)
+        public DatabaseManager(string database, string username, string password)
         {
-            InitClient(database);
+            InitClient(database, username, password);
         }
 
-        private void InitClient(string database)
+        private void InitClient(string database, string username, string password)
         {
+            _client = new HttpClient();
+            var token = GetAuthenticationToken(database, username, password).GetAwaiter().GetResult();
+
             _client = new HttpClient()
             {
                 BaseAddress = new Uri(database + "/Api/")
             };
+
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        }
+
+        private async Task<string> GetAuthenticationToken(string url, string username, string password)
+        {
+            var keyValues = new List<KeyValuePair<string, string>>
+            {
+                new KeyValuePair<string, string>("Username", username),
+                new KeyValuePair<string, string>("Password", password)
+            };
+
+            var body = new FormUrlEncodedContent(keyValues);
+
+            var result = await _client.PostAsync(url + "auth/token", body);
+            var content = await result.Content.ReadAsStringAsync();
+            var authResult = new { token = "" };
+            string token = JsonConvert.DeserializeAnonymousType(content, authResult).token;
+            return token;
         }
 
         public async Task<IEnumerable<Vendor>> GetVendors()

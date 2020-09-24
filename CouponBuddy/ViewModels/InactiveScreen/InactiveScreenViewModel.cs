@@ -17,10 +17,10 @@ namespace CouponBuddy.ViewModels.InactiveScreen
 {
     public class InactiveScreenViewModel : ViewModel
     {
-        private List<ImageSource> Images = new List<ImageSource>();
+        private List<Uri> Images = new List<Uri>();
         private int currentImageIndex = 0;
-        private ImageSource _currentImage;
-        public ImageSource CurrentImage
+        private Uri _currentImage;
+        public Uri CurrentImage
         {
             get
             {
@@ -57,7 +57,7 @@ namespace CouponBuddy.ViewModels.InactiveScreen
                 return;
             }
             CurrentImage = Images[currentImageIndex];
-            int adDuration = int.Parse(Properties.Resources.INACTIVE_AD_DURATION);
+            int adDuration = Properties.Settings.Default.INACTIVE_AD_DURATION;
             System.Timers.Timer timer = new System.Timers.Timer();
             timer.Interval = adDuration * 1000;
             timer.Elapsed += (obj, e) =>

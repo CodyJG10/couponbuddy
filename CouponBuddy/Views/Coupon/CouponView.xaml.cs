@@ -1,4 +1,4 @@
-﻿using BrochureBuddy.ViewModels.Coupon;
+﻿using CouponBuddy.ViewModels.Coupon;
 using CouponBuddy.Entities;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BrochureBuddy.Views.Coupon
+namespace CouponBuddy.Views.Coupon
 {
     public partial class CouponView : Page
     {

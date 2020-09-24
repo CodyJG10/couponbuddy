@@ -120,13 +120,19 @@
   <data name="BASE_URL" xml:space="preserve">
     <value>https://couponbuddy.azurewebsites.net/</value>
   </data>
-  <data name="INACTIVE_AD_DURATION" xml:space="preserve">
-    <value>5</value>
+  <data name="EMAIL_FROM" xml:space="preserve">
+    <value>coupon@pg-technologies.com</value>
   </data>
-  <data name="INACTIVITY_TIMEOUT" xml:space="preserve">
-    <value>45</value>
+  <data name="EMAIL_HOST" xml:space="preserve">
+    <value>mail.pg-technologies.com</value>
   </data>
-  <data name="LOCATION_ID" xml:space="preserve">
-    <value>62885dd9-0d90-420e-9141-ecbbd8ed5c62</value>
+  <data name="EMAIL_PASSWORD" xml:space="preserve">
+    <value>Airplane10</value>
+  </data>
+  <data name="EMAIL_USER" xml:space="preserve">
+    <value>cody@pg-technologies.com</value>
+  </data>
+  <data name="STORAGE_CONNECTION_STRING" xml:space="preserve">
+    <value>DefaultEndpointsProtocol=https;AccountName=couponbuddy;AccountKey=HUT5dj8HeOL2EGVf116GjO3y/EcP2Yf+IfFjFwVH/WH3WDKv3lNjmwuyqHftL48/7Wh+7EfTTG0Xqt1dwX4OgA==;EndpointSuffix=core.windows.net</value>
   </data>
 </root>

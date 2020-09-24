@@ -1,12 +1,12 @@
-﻿<Page x:Class="BrochureBuddy.Views.Coupon.CouponView"
+﻿<Page x:Class="CouponBuddy.Views.Coupon.CouponView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:BrochureBuddy.Views.Coupon"
+      xmlns:local="clr-namespace:CouponBuddy.Views.Coupon"
       xmlns:sharedviews="clr-namespace:CouponBuddy.Views.Shared"
       mc:Ignorable="d" 
-      d:DesignHeight="820" d:DesignWidth="1920"
+      d:DesignHeight="1720" d:DesignWidth="1080"
       Title="CouponView"
       Background="White">
 
@@ -15,7 +15,7 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="Foreground" Value="White"/>
         </Style>
     </Page.Resources>
@@ -34,15 +34,15 @@
                                 HorizontalAlignment="Left" 
                                 Grid.Row="0"/>
 
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
             <Label Content="{Binding Coupon.Title}"
                    Style="{StaticResource InformationLabel}"/>
             <Label Content="{Binding Coupon.Description}"
                    Style="{StaticResource InformationLabel}"/>
             <Label Content="{Binding Coupon.Instructions}"
                    Style="{StaticResource InformationLabel}"/>
-         
-            <StackPanel VerticalAlignment="Bottom">
+
+            <StackPanel>
                 <StackPanel HorizontalAlignment="Center"
                         Margin="0,15">
                     <StackPanel Orientation="Horizontal">
@@ -58,13 +58,15 @@
                              x:Name="txtEmail"/>
                     </StackPanel>
                     <Button Content="Send"
-                        x:Name="btnSendEmail"
-                        Click="BtnSendEmail_Click"
-                        Height="75"
-                        FontSize="45"/>
+                            x:Name="btnSendEmail"
+                            Click="BtnSendEmail_Click"
+                            Height="75"
+                            Width="250"
+                            Margin="0, 25"
+                            FontSize="45"/>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Center"
-                        Margin="0,30">
+                        Margin="0,15">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Text Coupon To Yourself:"
                            Foreground="White"
@@ -79,20 +81,26 @@
                              x:Name="txtPhoneNumber"/>
                     </StackPanel>
                     <Button Content="Send"
-                        x:Name="btnSendText"
-                        Click="BtnSendText_Click"
-                        Height="75"
-                        FontSize="45"/>
+                            x:Name="btnSendText"
+                            Click="BtnSendText_Click"
+                            Height="75"
+                            Width="250"
+                            Margin="0, 25"
+                            FontSize="45"/>
                 </StackPanel>
+
+                <StackPanel HorizontalAlignment="Center">
+                    <Label Content="Or scan below"
+                           Foreground="White"
+                           FontSize="45"
+                           Margin="0,0,50,0"/>
+                    <Image Source="{Binding QrCodeImage}"
+                           Width="85"
+                           Height="85"
+                           HorizontalAlignment="Center"/>
+                </StackPanel>
+
             </StackPanel>
-
-            <!--<Label Content="Test"
-                   Style="{StaticResource InformationLabel}"/>
-            <Label Content="Test"
-                   Style="{StaticResource InformationLabel}"/>
-            <Label Content="Test"
-                   Style="{StaticResource InformationLabel}"/>-->
-
         </StackPanel>
     </Grid>
 </Page>

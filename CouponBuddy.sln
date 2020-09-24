@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CouponBuddy.Entities", "Cou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CouponBuddy.Util", "CouponBuddy.Util\CouponBuddy.Util.csproj", "{B84DCA69-9A75-4823-AA41-ECE9AB597995}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CouponBuddy.Web", "CouponBuddy.Web\CouponBuddy.Web.csproj", "{2B9F3B69-EAF2-4F17-9755-208A896835BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CouponBuddy.WebCore", "CouponBuddy.WebCore\CouponBuddy.WebCore.csproj", "{F9ED6CF1-315D-4788-8598-A7F49AC929F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{B84DCA69-9A75-4823-AA41-ECE9AB597995}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B84DCA69-9A75-4823-AA41-ECE9AB597995}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B84DCA69-9A75-4823-AA41-ECE9AB597995}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2B9F3B69-EAF2-4F17-9755-208A896835BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2B9F3B69-EAF2-4F17-9755-208A896835BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2B9F3B69-EAF2-4F17-9755-208A896835BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2B9F3B69-EAF2-4F17-9755-208A896835BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9ED6CF1-315D-4788-8598-A7F49AC929F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9ED6CF1-315D-4788-8598-A7F49AC929F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9ED6CF1-315D-4788-8598-A7F49AC929F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9ED6CF1-315D-4788-8598-A7F49AC929F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

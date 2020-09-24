@@ -65,7 +65,7 @@ namespace CouponBuddy.ViewModels.VendorListScreen
                         Vendor = vendor
                     };
                     VendorButtons.Add(vendorButton);
-                    _database.AddImpression(vendor, Properties.Resources.LOCATION_ID);
+                    _database.AddImpression(vendor, CouponBuddy.Properties.Settings.Default.LOCATION_ID);
                 }
             }
         }

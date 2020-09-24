@@ -30,8 +30,8 @@ namespace CouponBuddy.ViewModels.VendorListScreen
             }
         }
 
-        private ImageSource _source;
-        public ImageSource LogoSource
+        private Uri _source;
+        public Uri LogoSource
         {
             get { return _source; }
             set
@@ -43,7 +43,7 @@ namespace CouponBuddy.ViewModels.VendorListScreen
 
         private void LoadImage()
         {
-            ImageSource img;
+            Uri img;
             if (VendorController.Instance.GetVendorMedia(Vendor.Id).logoImage != null)
             {
                 img = VendorController.Instance.GetVendorMedia(Vendor.Id).logoImage;

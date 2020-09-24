@@ -39,7 +39,7 @@ namespace CouponBuddy.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BrochureBuddy.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CouponBuddy.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -70,29 +70,47 @@ namespace CouponBuddy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 5.
+        ///   Looks up a localized string similar to coupon@pg-technologies.com.
         /// </summary>
-        internal static string INACTIVE_AD_DURATION {
+        internal static string EMAIL_FROM {
             get {
-                return ResourceManager.GetString("INACTIVE_AD_DURATION", resourceCulture);
+                return ResourceManager.GetString("EMAIL_FROM", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 45.
+        ///   Looks up a localized string similar to mail.pg-technologies.com.
         /// </summary>
-        internal static string INACTIVITY_TIMEOUT {
+        internal static string EMAIL_HOST {
             get {
-                return ResourceManager.GetString("INACTIVITY_TIMEOUT", resourceCulture);
+                return ResourceManager.GetString("EMAIL_HOST", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 62885dd9-0d90-420e-9141-ecbbd8ed5c62.
+        ///   Looks up a localized string similar to Airplane10.
         /// </summary>
-        internal static string LOCATION_ID {
+        internal static string EMAIL_PASSWORD {
             get {
-                return ResourceManager.GetString("LOCATION_ID", resourceCulture);
+                return ResourceManager.GetString("EMAIL_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cody@pg-technologies.com.
+        /// </summary>
+        internal static string EMAIL_USER {
+            get {
+                return ResourceManager.GetString("EMAIL_USER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DefaultEndpointsProtocol=https;AccountName=couponbuddy;AccountKey=HUT5dj8HeOL2EGVf116GjO3y/EcP2Yf+IfFjFwVH/WH3WDKv3lNjmwuyqHftL48/7Wh+7EfTTG0Xqt1dwX4OgA==;EndpointSuffix=core.windows.net.
+        /// </summary>
+        internal static string STORAGE_CONNECTION_STRING {
+            get {
+                return ResourceManager.GetString("STORAGE_CONNECTION_STRING", resourceCulture);
             }
         }
     }

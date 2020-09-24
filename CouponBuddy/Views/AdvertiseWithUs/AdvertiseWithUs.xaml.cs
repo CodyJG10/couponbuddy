@@ -60,7 +60,7 @@ namespace CouponBuddy.Views.AdvertiseWithUs
                 using (QRCode qrCode = new QRCode(qrCodeData))
                 {
                     Bitmap qrCodeImage = qrCode.GetGraphic(20);
-                    QrCodeImageSource = BitmapImageLoader.ToBitmapImage(qrCodeImage) as ImageSource;
+                    QrCodeImageSource = BitmapImageLoader.FromBitmap(qrCodeImage) as ImageSource;
                 }
             }
         }

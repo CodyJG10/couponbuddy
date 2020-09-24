@@ -1,0 +1,22 @@
+﻿@model  AddVendorToLocationViewModel
+
+@{
+    ViewData["Title"] = "AddVendorToLocation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Vendor To Location</h2>
+
+<form asp-action="AddVendorToLocation" method="post" class="form-group">
+    <div class="form-group">
+        <label class="form-control">Username</label>
+        <input type="text" class="form-control" asp-for="Username" />
+    </div>
+    <div class="form-group">
+        <label class="form-control">Location ID</label>
+        <input type="text" class="form-control" asp-for="LocationId" />
+    </div>
+    <div class="form-group">
+        <input type="submit" class="form-control" value="Add" />
+    </div>
+</form>

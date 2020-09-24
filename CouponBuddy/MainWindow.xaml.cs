@@ -25,6 +25,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Timers;
+using CouponBuddy.Admin;
 
 namespace CouponBuddy
 {
@@ -37,20 +38,21 @@ namespace CouponBuddy
 
         public MainWindow()
         {
-            _instance = this;
-            try
+            if ((Application.Current as App).IsFirstLaunch)
             {
+                var window = new FirstLaunch();
+                window.Show();
+            }
+            else
+            {
+                _instance = this;
                 InitializeComponent();
+                (ServiceLocator.Current.GetService(typeof(INavigationService)) as INavigationService).SetMainFrame(frameMain);
+                //WindowState = WindowState.Maximized;
+                //WindowStyle = WindowStyle.None;
+                Page page = new LoadingScreen();
+                frameMain.Navigate(page);
             }
-            catch (Exception e)
-            {
-                Console.WriteLine("Test");
-            }
-            (ServiceLocator.Current.GetService(typeof(INavigationService)) as INavigationService).SetMainFrame(frameMain);
-            WindowState = WindowState.Maximized;
-            WindowStyle = WindowStyle.None;
-            Page page = new LoadingScreen();
-            frameMain.Navigate(page);
         }
 
         public void NavigateToPage(Page page)
@@ -87,10 +89,10 @@ namespace CouponBuddy
         {
             if (inactiveScreenTimerRunning) return;
             inactiveScreenTimerRunning = true;
-            int timeoutSeconds = int.Parse(Properties.Resources.INACTIVITY_TIMEOUT);
+            int timeoutSeconds = Properties.Settings.Default.INACTIVITY_TIMEOUT;
 
             System.Timers.Timer timer = new System.Timers.Timer();
-            timer.Interval = 1000 * int.Parse(Properties.Resources.INACTIVE_AD_DURATION);
+            timer.Interval = 1000 * Properties.Settings.Default.INACTIVE_AD_DURATION;
             timer.Elapsed += (obj, e) =>
             {
                 try

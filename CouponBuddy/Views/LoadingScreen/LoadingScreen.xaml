@@ -8,7 +8,7 @@
       xmlns:models="clr-namespace:CouponBuddy.ViewModels.LoadingScreen"
       mc:Ignorable="d" 
       Background="White"
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1720" d:DesignWidth="1080"
       Title="LoadingScreen">
 
     <Page.DataContext>
