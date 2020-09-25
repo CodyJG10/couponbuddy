@@ -19,15 +19,15 @@ using Gma.QrCodeNet.Encoding;
 using Gma.QrCodeNet.Encoding.Windows.Render;
 using System.Windows.Media.Imaging;
 using System.Windows.Input;
-using BrochureBuddy.Views.Coupon;
+using CouponBuddy.Views.Coupon;
 
 namespace CouponBuddy.ViewModels.VendorScreen
 {
     public class VendorScreenViewModel : ViewModel
     {
         public Vendor Vendor { get; set; }
-        private ImageSource _image; 
-        public ImageSource Image
+        private Uri _image; 
+        public Uri Image
         {
             get
             {
@@ -72,7 +72,6 @@ namespace CouponBuddy.ViewModels.VendorScreen
 
         private void LoadMedia()
         {
-            BitmapImageLoader imgLoader = new BitmapImageLoader();
             var vendorMedia = VendorController.Instance.GetVendorMedia(Vendor.Id);
             Image = vendorMedia.logoImage;
         }
@@ -86,7 +85,7 @@ namespace CouponBuddy.ViewModels.VendorScreen
                 using (QRCode qrCode = new QRCode(qrCodeData))
                 {
                     Bitmap qrCodeImage = qrCode.GetGraphic(20);
-                    QrCodeImage = BitmapImageLoader.ToBitmapImage(qrCodeImage) as ImageSource;
+                    QrCodeImage = BitmapImageLoader.FromBitmap(qrCodeImage);
                 }
             }
         }

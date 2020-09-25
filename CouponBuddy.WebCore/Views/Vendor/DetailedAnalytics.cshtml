@@ -1,0 +1,106 @@
+﻿@model CouponBuddy.Entities.Location
+@inject CouponBuddy.Web.Data.ApplicationDbContext _context
+@inject Microsoft.AspNetCore.Identity.UserManager<CouponBuddy.Web.Areas.Identity.User> _userMan
+
+@{
+    ViewData["Title"] = "DetailedAnalytics";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="h2 text-center">Analytics For @Model.Name</h2>
+
+<label class="label-info bg-info center-block text-center">Double Click An Option Below To View An Enlarged Chart</label>
+
+@{
+    var currentUsername = User.Identity.Name;
+    var vendor = _context.Vendors.Single(x => x.Username == currentUsername);
+    var analytics = _context.VendorAnalytics.Single(x => x.VendorId == vendor.Id.ToString() && x.LocationId == Model.Id);
+    var allImpressions = analytics.GetImpressions();
+    var allClicks = analytics.GetClicks();
+}
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart(1));
+
+
+    function drawChart(type) {
+           $.ajax({
+            type: "GET",
+            url: "GetChartData?type=" + type + "&locationId=@Model.Id",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+                success: function (r) {
+                    var chartdata = new google.visualization.DataTable();
+                    chartdata.addColumn('date', 'Date');
+                    chartdata.addColumn('number', 'Impressions');
+                    chartdata.addColumn('number', 'Clicks');
+
+                    for (var i = 0; i < r.length; i++) {
+                        var day = r[i].Day;
+                        var dayFormatted = new Date(Date.parse(day));
+                        var impressions = r[i].Impressions;
+                        var clicks = r[i].Clicks;
+                        chartdata.addRow([dayFormatted, impressions, clicks]);
+                    }
+
+                    var options = {'title':'Impression & Click Analytics'};
+
+                    var chartName = "chart_container_" + type.toString();
+                    var chart = new google.visualization.LineChart(document.getElementById(chartName));
+                    chart.draw(chartdata, options);
+
+                },
+              failure: function (r) {
+                  alert('error');
+                alert(r.d);
+            },
+              error: function (r) {
+                  alert('error');
+                alert(r.d);
+            }
+          });
+    }
+</script>
+<style>
+    .list-inline {
+      display: flex;
+      justify-content: center;
+}
+</style>
+<div class="container-fluid text-center">
+    <ul class="nav nav-pills list-inline">
+        <li class="active item"><a data-toggle="pill" href="#chart_container_1" onclick="drawChart(1)">1 Month</a></li>
+        <li class="item"><a data-toggle="pill" href="#chart_container_2" onclick="drawChart(2)">3 Months</a></li>
+        <li class="item"><a data-toggle="pill" href="#chart_container_3" onclick="drawChart(3)">1 Year</a></li>
+        <li class="item"><a data-toggle="pill" href="#chart_container_4" onclick="drawChart(4)">All Time</a></li>
+    </ul>
+
+    <div class="tab-content center-block">
+        <div id="chart_container_1" class="tab-pane fade in active" style="width: 900px; height: 500px">
+        </div>
+        <div id="chart_container_2" class="tab-pane fade" style="width: 900px; height: 500px">
+        </div>
+        <div id="chart_container_3" class="tab-pane fade" style="width: 900px; height: 500px">
+        </div>
+        <div id="chart_container_4" class="tab-pane fade" style="width: 900px; height: 500px">
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 table-bordered bg-info">
+            @{decimal bounceRate = (decimal)allClicks.Count / (decimal)allImpressions.Count; }
+            <label class="text-center center-block">
+                Bounce Rate: @Math.Round(bounceRate, 2)%
+            </label>
+        </div>
+        <div class="col-md-6 table-bordered bg-info">
+            <label class="text-center center-block">
+                Total Sesions: @allClicks.Count
+            </label>
+        </div>
+    </div>
+</div>

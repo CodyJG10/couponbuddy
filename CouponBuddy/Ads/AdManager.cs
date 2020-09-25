@@ -1,4 +1,6 @@
-﻿using CommonServiceLocator;
+﻿using CouponBuddy.Properties;
+using CommonServiceLocator;
+using CouponBuddy.Api;
 using CouponBuddy.Api.Interfaces;
 using CouponBuddy.Api.Managers;
 using CouponBuddy.Entities;
@@ -8,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.PropertyGridInternal;
 using System.Windows.Media;
 
 namespace CouponBuddy.Ads
@@ -32,23 +35,25 @@ namespace CouponBuddy.Ads
 
         public async Task<Task> LoadAds()
         {
+            Console.WriteLine("[Ads] attempting to load location ads");
             IDatabaseManager _db = ServiceLocator.Current.GetService(typeof(IDatabaseManager)) as IDatabaseManager;
 
-            var id = Properties.Resources.LOCATION_ID;
+            var id = Settings.Default.LOCATION_ID;
             var locationAds = (await (ServiceLocator.Current.GetService(typeof(IDatabaseManager)) as IDatabaseManager).GetAds(id).ConfigureAwait(true)).ToList();
-
-            BitmapImageLoader imgLoader = new BitmapImageLoader();
+            var imgLoader = ServiceLocator.Current.GetService(typeof(ImageLoader)) as ImageLoader;
 
             foreach (var ad in locationAds)
             {
-                string locationId = Properties.Resources.LOCATION_ID;
+                string locationId = Settings.Default.LOCATION_ID;
                 Location location = await _db.GetLocation(locationId).ConfigureAwait(true);
                 string container = VendorToContainer.GetContainerName(location.Name);
                 string fileName = ad.Name;
-                var img = await imgLoader.LoadImageSource(container, fileName).ConfigureAwait(true);
-                adImages.Add(img);
+                var imageUri = await imgLoader.DownloadBlob(container, fileName).ConfigureAwait(true);
+                var imageSource = BitmapImageLoader.ToImageSource(imageUri);
+                adImages.Add(imageSource);
             }
 
+            Console.WriteLine("[Ads] succesfully loaded all (" + locationAds.Count + ") location ads");
             return Task.CompletedTask;
         }
 
@@ -60,7 +65,7 @@ namespace CouponBuddy.Ads
             {
                 currentIndex = 0;
             }
-            Console.WriteLine("[INDEX]" + currentIndex);
+            Console.WriteLine("[Ads] current ad index:" + currentIndex);
             return adImages[currentIndex];
         }
     }

@@ -30,7 +30,11 @@ namespace CouponBuddy.Views.Coupon
             timer.Interval = 3000;
             timer.Elapsed += (obj, e) =>
             {
+<<<<<<< HEAD
                 Application.Current.Dispatcher.Invoke(() => 
+=======
+                Application.Current.Dispatcher.Invoke(() =>
+>>>>>>> master
                 {
                     MainWindow.Instance.NavigateToPage(new InactiveScreen.InactiveScreen());
                 });

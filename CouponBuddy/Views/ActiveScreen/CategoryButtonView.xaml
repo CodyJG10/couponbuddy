@@ -33,8 +33,7 @@
                 HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Center"
                 FontSize="{StaticResource CATEGORY_BUTTON_FONT_SIZE}"
-                x:Name="lblCategoryName"
-                Margin="20,43,20,19"/>
+                x:Name="lblCategoryName" Margin="20,43,20,19"/>
 
     </Grid>
 </UserControl>

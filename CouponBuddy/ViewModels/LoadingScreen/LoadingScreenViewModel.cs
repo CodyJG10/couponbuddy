@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Net;
 using System.Timers;
+using CouponBuddy.Properties;
 
 namespace CouponBuddy.ViewModels.LoadingScreen
 {
@@ -29,25 +30,26 @@ namespace CouponBuddy.ViewModels.LoadingScreen
 
         private async Task<Task> LoadContent()
         {
+            Console.WriteLine("[Loading] Attempting to load content");
+
             CheckForInternetConnection();
 
-            BitmapImageLoader imgLoader = new BitmapImageLoader();
+            System.Threading.Thread.Sleep(1500);
+
             var db = ServiceLocator.Current.GetService(typeof(IDatabaseManager)) as DatabaseManager;
             
-            string locationId = Properties.Resources.LOCATION_ID;
+            string locationId = Settings.Default.LOCATION_ID;
 
             var vendors = await db.GetVendors(locationId).ConfigureAwait(true);
 
-            await AdManager.Instance.LoadAds().ConfigureAwait(true);
+            await AdManager.Instance.LoadAds();
             await VendorController.Instance.LoadVendors(vendors.ToList()).ConfigureAwait(true);
 
-            Console.WriteLine("Loaded all vendors and location ads");
+            Console.WriteLine("[Loading] Loaded all vendors and location ads");
 
-            MainWindow.Instance.Activate();
-            MainWindow.Instance.Focus();
-
-            Application.Current.Dispatcher.Invoke((Action)delegate {
-                var screen = new Views.InactiveScreen.InactiveScreen(); 
+            Application.Current.Dispatcher.Invoke(delegate
+            {
+                var screen = new Views.InactiveScreen.InactiveScreen();
                 _navigation.Navigate(screen);
             });
             return Task.CompletedTask;
@@ -55,6 +57,7 @@ namespace CouponBuddy.ViewModels.LoadingScreen
 
         private void CheckForInternetConnection()
         {
+            Console.WriteLine("[Internet] attempting to establish network connection");
             if (!IsConnectedToInternet())
             {
                 //Not connected to the internet
@@ -68,13 +71,13 @@ namespace CouponBuddy.ViewModels.LoadingScreen
                     if (isConnectedToInternet)
                     {
                         timer.Stop();
-                        Console.WriteLine("Detected network connection. Proceeding with loading.");
+                        Console.WriteLine("[Internet] Detected network connection. Proceeding with loading.");
                         isConnectedToInternet = true;
                         timer.Dispose();
                     }
                     else
                     {
-                        Console.WriteLine("Waiting for network connection...");
+                        Console.WriteLine("[Internet] Waiting for network connection...");
                         isConnectedToInternet = false;
                     }
                 };

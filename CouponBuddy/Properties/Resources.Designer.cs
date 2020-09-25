@@ -70,7 +70,7 @@ namespace CouponBuddy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to coupons@pg-technologies.com.
+        ///   Looks up a localized string similar to coupon@pg-technologies.com.
         /// </summary>
         internal static string EMAIL_FROM {
             get {
@@ -97,7 +97,7 @@ namespace CouponBuddy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to coupons@pg-technologies.com.
+        ///   Looks up a localized string similar to cody@pg-technologies.com.
         /// </summary>
         internal static string EMAIL_USER {
             get {
@@ -106,65 +106,11 @@ namespace CouponBuddy.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 5.
+        ///   Looks up a localized string similar to DefaultEndpointsProtocol=https;AccountName=couponbuddy;AccountKey=HUT5dj8HeOL2EGVf116GjO3y/EcP2Yf+IfFjFwVH/WH3WDKv3lNjmwuyqHftL48/7Wh+7EfTTG0Xqt1dwX4OgA==;EndpointSuffix=core.windows.net.
         /// </summary>
-        internal static string INACTIVE_AD_DURATION {
+        internal static string STORAGE_CONNECTION_STRING {
             get {
-                return ResourceManager.GetString("INACTIVE_AD_DURATION", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 45.
-        /// </summary>
-        internal static string INACTIVITY_TIMEOUT {
-            get {
-                return ResourceManager.GetString("INACTIVITY_TIMEOUT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 62885dd9-0d90-420e-9141-ecbbd8ed5c62.
-        /// </summary>
-        internal static string LOCATION_ID {
-            get {
-                return ResourceManager.GetString("LOCATION_ID", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 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.
-        /// </summary>
-        internal static string SENDGRID_EMAIL_APIKEY {
-            get {
-                return ResourceManager.GetString("SENDGRID_EMAIL_APIKEY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to +19124809477.
-        /// </summary>
-        internal static string TEXT_ACCOUNT_FROM {
-            get {
-                return ResourceManager.GetString("TEXT_ACCOUNT_FROM", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ACb758ac931310f20c39f7e0d7451ae3b4.
-        /// </summary>
-        internal static string TEXT_ACCOUNT_SID {
-            get {
-                return ResourceManager.GetString("TEXT_ACCOUNT_SID", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 523ab04082e6a42db840cc39b3b7d242.
-        /// </summary>
-        internal static string TEXT_ACCOUNT_TOKEN {
-            get {
-                return ResourceManager.GetString("TEXT_ACCOUNT_TOKEN", resourceCulture);
+                return ResourceManager.GetString("STORAGE_CONNECTION_STRING", resourceCulture);
             }
         }
     }

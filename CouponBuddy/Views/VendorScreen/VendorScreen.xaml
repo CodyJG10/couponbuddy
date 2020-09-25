@@ -81,7 +81,7 @@
             <Image Source="{Binding QrCodeImage}"
                    Width="150"
                    Height="150"
-                   HorizontalAlignment="Center"
+                   HorizontalAlignment="Stretch"
                    x:Name="imgQrCode"/>
 
         </StackPanel>

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 
-namespace BrochureBuddy.Util
+namespace CouponBuddy.Util
 {
     public static class TextSender
     {
-        private static string accountSid = CouponBuddy.Properties.Resources.TEXT_ACCOUNT_SID;
-        private static string authToken = CouponBuddy.Properties.Resources.TEXT_ACCOUNT_TOKEN;
-        private static string from = CouponBuddy.Properties.Resources.TEXT_ACCOUNT_FROM;
+        const string accountSid = "ACb758ac931310f20c39f7e0d7451ae3b4";
+        const string authToken = "523ab04082e6a42db840cc39b3b7d242";
+        const string from = "+12184525054";
 
         private static bool isInitialized = false;
 
@@ -39,7 +39,7 @@ namespace BrochureBuddy.Util
                 to: new Twilio.Types.PhoneNumber("+1" + number)
             );
 
-            Console.WriteLine(message.Sid);
+            Console.WriteLine("[Coupon] Sent text to " + message.Sid);
         }
     }
 }

@@ -1,19 +1,15 @@
-﻿using BrochureBuddy.Util;
-using CouponBuddy;
+﻿using CouponBuddy.Util;
 using CouponBuddy.Entities;
-using CouponBuddy.Views.Coupon;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Media;
-using CouponBuddy.Util;
-using CouponBuddy.ViewModels;
+using CouponBuddy.Views.Coupon;
 using QRCoder;
+using System.Windows.Media;
 
-namespace BrochureBuddy.ViewModels.Coupon
+namespace CouponBuddy.ViewModels.Coupon
 {
     public class CouponScreenViewModel : ViewModel
     {
@@ -31,6 +27,7 @@ namespace BrochureBuddy.ViewModels.Coupon
             }
         }
 
+
         public CouponScreenViewModel(VendorCoupon coupon)
         {
             Coupon = coupon;
@@ -46,7 +43,7 @@ namespace BrochureBuddy.ViewModels.Coupon
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("[Coupon] error emailing coupon: " + e.Message);
             }
         }
 
@@ -60,15 +57,14 @@ namespace BrochureBuddy.ViewModels.Coupon
         {
             using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
             {
-                string baseUrl = CouponBuddy.Properties.Resources.BASE_URL;
+                string baseUrl = Properties.Resources.BASE_URL;
                 QRCodeData qrCodeData = qrGenerator.CreateQrCode(baseUrl + "/coupons?id=" + Coupon.Id, QRCodeGenerator.ECCLevel.Q);
                 using (QRCode qrCode = new QRCode(qrCodeData))
                 {
-                    Bitmap qrCodeImage = qrCode.GetGraphic(20);
-                    QrCodeImage = BitmapImageLoader.ToBitmapImage(qrCodeImage) as ImageSource;
+                    var qrCodeImage = qrCode.GetGraphic(20);
+                    QrCodeImage = BitmapImageLoader.FromBitmap(qrCodeImage);
                 }
             }
         }
     }
-
 }

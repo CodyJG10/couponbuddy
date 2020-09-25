@@ -12,7 +12,7 @@ namespace CouponBuddy.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.2.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -20,6 +20,78 @@ namespace CouponBuddy.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("62885dd9-0d90-420e-9141-ecbbd8ed5c62")]
+        public string LOCATION_ID {
+            get {
+                return ((string)(this["LOCATION_ID"]));
+            }
+            set {
+                this["LOCATION_ID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("45")]
+        public int INACTIVITY_TIMEOUT {
+            get {
+                return ((int)(this["INACTIVITY_TIMEOUT"]));
+            }
+            set {
+                this["INACTIVITY_TIMEOUT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int INACTIVE_AD_DURATION {
+            get {
+                return ((int)(this["INACTIVE_AD_DURATION"]));
+            }
+            set {
+                this["INACTIVE_AD_DURATION"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("cody@pg-technologies.com")]
+        public string DATABASE_USERNAME {
+            get {
+                return ((string)(this["DATABASE_USERNAME"]));
+            }
+            set {
+                this["DATABASE_USERNAME"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Airplane10")]
+        public string DATABASE_PASSWORD {
+            get {
+                return ((string)(this["DATABASE_PASSWORD"]));
+            }
+            set {
+                this["DATABASE_PASSWORD"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FIRST_LAUNCH {
+            get {
+                return ((bool)(this["FIRST_LAUNCH"]));
+            }
+            set {
+                this["FIRST_LAUNCH"] = value;
             }
         }
     }

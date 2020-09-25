@@ -1,9 +1,9 @@
-﻿<Page x:Class="BrochureBuddy.Views.Coupon.CouponView"
+﻿<Page x:Class="CouponBuddy.Views.Coupon.CouponView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:BrochureBuddy.Views.Coupon"
+      xmlns:local="clr-namespace:CouponBuddy.Views.Coupon"
       xmlns:sharedviews="clr-namespace:CouponBuddy.Views.Shared"
       mc:Ignorable="d" 
       d:DesignHeight="1720" d:DesignWidth="1080"
@@ -15,14 +15,14 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="Foreground" Value="White"/>
         </Style>
     </Page.Resources>
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="{StaticResource BACKGROUND_IMAGE}" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="/Assets/background_1.png" Stretch="UniformToFill"/>
         </Grid.Background>
 
         <Grid.RowDefinitions>
@@ -34,7 +34,7 @@
                                 HorizontalAlignment="Left" 
                                 Grid.Row="0"/>
 
-        <StackPanel Grid.Row="1" VerticalAlignment="Stretch">
+        <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
             <Label Content="{Binding Coupon.Title}"
                    Style="{StaticResource InformationLabel}"/>
             <Label Content="{Binding Coupon.Description}"
@@ -51,6 +51,7 @@
                            FontSize="45"
                            Margin="0,0,50,0"/>
                         <TextBox Width="450"
+                             Text="codyjg10@gmail.com"
                              FontSize="35"
                              HorizontalContentAlignment="Center"
                              VerticalContentAlignment="Center"
@@ -73,6 +74,7 @@
                            Margin="0,0,50,0"/>
                         <TextBox Width="450"
                              FontSize="45"
+                             Text="6093161245"
                              HorizontalContentAlignment="Center"
                              VerticalContentAlignment="Center"
                             
@@ -86,19 +88,19 @@
                             Margin="0, 25"
                             FontSize="45"/>
                 </StackPanel>
-                <WrapPanel HorizontalAlignment="Center">
-                    <!--<Label Content="Or Scan The Image Below"
+
+                <StackPanel HorizontalAlignment="Center">
+                    <Label Content="Or scan below"
                            Foreground="White"
                            FontSize="45"
-                           Margin="0,0,50,0"/>-->
+                           Margin="0,0,50,0"/>
                     <Image Source="{Binding QrCodeImage}"
-                           Width="150"
-                           Height="150"
+                           Width="85"
+                           Height="85"
                            HorizontalAlignment="Center"/>
-                </WrapPanel>
+                </StackPanel>
 
             </StackPanel>
-
         </StackPanel>
     </Grid>
 </Page>

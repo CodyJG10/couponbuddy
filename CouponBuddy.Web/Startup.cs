@@ -19,6 +19,8 @@ namespace CouponBuddy.Web
 {
     public class Startup
     {
+        public static string SigningKey { get; private set; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -39,6 +41,31 @@ namespace CouponBuddy.Web
                     Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddSingleton(typeof(FileManager));
+
+            SigningKey = Configuration["ApiSecurityKey"];
+
+            services.AddAuthentication()
+            .AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.RequireHttpsMetadata = false;
+                options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+                {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(SigningKey))
+                };
+
+                options.Events = new JwtBearerEvents()
+                {
+                    OnAuthenticationFailed = context =>
+                    {
+                        Console.WriteLine("Authentication failed: " + context.Exception.Message);
+                        return Task.CompletedTask;
+                    }
+                };
+
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
