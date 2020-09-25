@@ -253,6 +253,7 @@ namespace CouponBuddy.Web.Controllers
         [HttpPost("CreateLocation")]
         public IActionResult CreateLocation(Location location)
         {
+            location.Id = Guid.NewGuid().ToString();
             _context.Locations.Add(location);
             _context.SaveChanges();
             return RedirectToAction("Index", "Home");
