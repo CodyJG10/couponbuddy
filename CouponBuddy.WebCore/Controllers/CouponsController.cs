@@ -6,8 +6,9 @@ using CouponBuddy.Web.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace CouponBuddy.WebCore.Controllers
+namespace CouponBuddy.Web.Controllers
 {
+    [Route("[controller]")]
     public class CouponsController : Controller
     {
         private ApplicationDbContext _context;
@@ -17,6 +18,7 @@ namespace CouponBuddy.WebCore.Controllers
             _context = context;
         }
 
+        [Route("")]
         public IActionResult Index(int id)
         {
             var coupon = _context.VendorCoupons.SingleOrDefault(x => x.Id == id);
