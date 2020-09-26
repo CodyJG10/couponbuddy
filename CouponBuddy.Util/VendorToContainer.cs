@@ -11,12 +11,26 @@ namespace CouponBuddy.Util
     {
         public static string GetContainerName(Vendor vendor)
         {
-            return vendor.Name.ToLower().Replace(" ", "").Replace("'", "").Replace("\"","");
+            return vendor.Name.ToLower()
+                .Replace(" ", "")
+                .Replace("'", "")
+                .Replace("\"","")
+                .Replace("&", "")
+                .Replace("'", "")
+                .Replace("’", "")
+                .Replace(".", "");
         }
 
         public static string GetContainerName(string name)
         {
-            return name.ToLower().Replace(" ", "").Replace("'", "").Replace("\"", "");
+            return name.ToLower()
+                .Replace(" ", "")
+                .Replace("'", "")
+                .Replace("\"", "")
+                .Replace("&", "")
+                .Replace("'", "")
+                .Replace("’", "")
+                .Replace(".", "");
         }
     }
 }

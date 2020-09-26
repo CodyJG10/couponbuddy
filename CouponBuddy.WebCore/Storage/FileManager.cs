@@ -36,7 +36,7 @@ namespace CouponBuddy.Web.Storage
 
         public async Task<bool> UploadFile(IFormFile file, string fileName, string containerName)
         {
-            containerName = containerName.ToLower().Replace(" ", "");
+            containerName = VendorToContainer.GetContainerName(containerName);
             var containerClient = _blobServiceClient.GetBlobContainerClient(containerName);
             await containerClient.CreateIfNotExistsAsync();
             using (var stream = file.OpenReadStream())
