@@ -20,12 +20,10 @@ namespace CouponBuddy.Entities
         public const int SPECIALTIES = 5;
         [CategoryInfo("Boutiques", "Boutiques")]
         public const int BOUTIQUES = 6;
-        [CategoryInfo("Dessert", "Specialty Food & Drink")]
-        public const int DESSERTS = 7;
         [CategoryInfo("Services", "Services")]
-        public const int SERVICES = 8;
-        [CategoryInfo("Marina", "Marina")]
-        public const int MARINA = 9;
+        public const int SERVICES = 7;
+        [CategoryInfo("Water", "Water & Boating")]
+        public const int WATER_AND_BOATS = 8;
 
         public static CategoryInfo GetCategory(int category)
         {
