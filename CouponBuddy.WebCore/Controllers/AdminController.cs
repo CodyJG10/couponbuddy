@@ -111,7 +111,7 @@ namespace CouponBuddy.Web.Controllers
 
         [HttpPost("CreateVendor")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,Address,Phone,CategoryId,Username")] Vendor vendor)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,Address,Phone,CategoryId,Username,Website")] Vendor vendor)
         {
             if (ModelState.IsValid)
             {
