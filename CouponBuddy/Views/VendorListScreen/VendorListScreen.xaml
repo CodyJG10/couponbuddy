@@ -25,7 +25,7 @@
         </Grid.Background>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.1*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid>
@@ -41,7 +41,7 @@
 
             <Label x:Name="lblTitle"
                 Content="{Binding Title}"
-                FontSize="80"
+                FontSize="35"
                    Foreground="{StaticResource FONT_COLOR}"
                 HorizontalContentAlignment="Center"
                 Grid.Row="1"/>

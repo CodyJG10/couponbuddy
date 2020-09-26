@@ -54,10 +54,6 @@
                                         ButtonImage="/Assets/food.jpg"/>
             <local:CategoryButtonView Style="{StaticResource btn}"
                                         CategoryID="8"
-                                        ButtonImage="/Assets/Salon.jpg"
-                                        MouseLeftButtonDown="CategoryButtonClicked"/>
-            <local:CategoryButtonView Style="{StaticResource btn}"
-                                        CategoryID="9"
                                         ButtonImage="/Assets/Marina.jpg"
                                         MouseLeftButtonDown="CategoryButtonClicked"/>
             <local:CategoryButtonView Style="{StaticResource btn}"

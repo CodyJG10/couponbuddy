@@ -63,10 +63,14 @@
         <StackPanel Grid.Column="1"
                     Grid.Row="1">
 
-            <Label Content="{Binding Vendor.Name}"
-                   HorizontalContentAlignment="Center"
-                   FontSize="35"
-                   Foreground="{StaticResource FONT_COLOR}"/>
+            <Label HorizontalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                   Margin="5">
+                <TextBlock Text="{Binding Vendor.Name}"
+                           FontSize="35"
+                           Foreground="{StaticResource FONT_COLOR}"
+                           TextWrapping="WrapWithOverflow" Width="500"/>
+            </Label>
 
             <Label Content="{Binding Vendor.Address}"
                    HorizontalContentAlignment="Center"
@@ -79,8 +83,8 @@
                    Foreground="{StaticResource FONT_COLOR}"/>
 
             <Image Source="{Binding QrCodeImage}"
-                   Width="150"
-                   Height="150"
+                   Width="100"
+                   Height="100"
                    HorizontalAlignment="Stretch"
                    x:Name="imgQrCode"/>
 
@@ -94,8 +98,13 @@
                 <TextBlock Text="{Binding Vendor.Description}"
                         FontSize="35"
                         Foreground="{StaticResource FONT_COLOR}"
-                        TextWrapping="WrapWithOverflow" Width="1080" Height="87"/>
+                        TextWrapping="WrapWithOverflow" Width="900" Height="200"/>
             </Label>
+
+            <Label Content="Coupons"
+                   FontSize="35"
+                   HorizontalAlignment="Center"
+                   Foreground="{StaticResource FONT_COLOR}"/>
 
             <ItemsControl ItemsSource="{Binding Coupons}"
                           HorizontalAlignment="Center"

@@ -37,7 +37,7 @@ namespace CouponBuddy.ViewModels.LoadingScreen
             System.Threading.Thread.Sleep(1500);
 
             var db = ServiceLocator.Current.GetService(typeof(IDatabaseManager)) as DatabaseManager;
-            
+
             string locationId = Settings.Default.LOCATION_ID;
 
             var vendors = await db.GetVendors(locationId).ConfigureAwait(true);

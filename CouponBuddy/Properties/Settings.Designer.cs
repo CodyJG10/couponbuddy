@@ -25,7 +25,7 @@ namespace CouponBuddy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("62885dd9-0d90-420e-9141-ecbbd8ed5c62")]
+        [global::System.Configuration.DefaultSettingValueAttribute("8ee80e54-cb54-4bd7-bc3e-c55c066a2bf6")]
         public string LOCATION_ID {
             get {
                 return ((string)(this["LOCATION_ID"]));
@@ -85,7 +85,7 @@ namespace CouponBuddy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool FIRST_LAUNCH {
             get {
                 return ((bool)(this["FIRST_LAUNCH"]));

@@ -11,8 +11,8 @@
             <Thickness x:Key="CATEGORY_BUTTON_MARGIN">15</Thickness>
             <sys:Double x:Key="CATEGORY_BUTTON_FONT_SIZE">15.0</sys:Double>
 
-            <Thickness x:Key="VENDOR_LIST_BUTTON_MARGIN">15</Thickness>
-            <sys:Double x:Key="VENDOR_LIST_BUTTON_FONT_SIZE">15.0</sys:Double>
+            <Thickness x:Key="VENDOR_LIST_BUTTON_MARGIN">5</Thickness>
+            <sys:Double x:Key="VENDOR_LIST_BUTTON_FONT_SIZE">13.0</sys:Double>
 
             <Brush x:Key="COLOR_PRIMARY">#93f0ff</Brush>
             <Brush x:Key="COLOR_SECONDARY">Red</Brush>

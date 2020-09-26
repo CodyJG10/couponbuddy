@@ -33,7 +33,7 @@ namespace CouponBuddy
             InitializeComponent();
             ConfigureServices();
 
-            IsFirstLaunch = (bool)Settings.Default["FIRST_LAUNCH"];
+            IsFirstLaunch = Settings.Default.FIRST_LAUNCH;
 
             if (!IsFirstLaunch) 
             {
