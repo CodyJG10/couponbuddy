@@ -36,6 +36,7 @@ namespace CouponBuddy.ViewModels.InactiveScreen
         public InactiveScreenViewModel()
         {
             LoadAds();
+            Images.Shuffle();
             RunAds();
         }
 

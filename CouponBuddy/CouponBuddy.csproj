@@ -215,6 +215,7 @@
     <Compile Include="Util\BitmapImageLoader.cs" />
     <Compile Include="Util\EmailSender.cs" />
     <Compile Include="Util\IdleTimeDetector.cs" />
+    <Compile Include="Util\ListShuffler.cs" />
     <Compile Include="Util\TextSender.cs" />
     <Compile Include="ViewModels\ActiveScreen\ActiveScreenViewModel.cs" />
     <Compile Include="ViewModels\AdBanner\AdBannerViewModel.cs" />
