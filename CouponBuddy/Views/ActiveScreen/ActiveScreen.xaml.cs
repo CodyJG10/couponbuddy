@@ -29,17 +29,37 @@ namespace CouponBuddy.Views.ActiveScreen
             DataContext = new ActiveScreenViewModel();
         }
 
-        private void CategoryButtonClicked(object sender, MouseButtonEventArgs e)
-        {
-            CategoryButtonView btn = sender as CategoryButtonView;
-            int category = int.Parse(btn.CategoryID);
-            Context.ShowCategory(category);
-        }
-
         private void BtnAdvertiseWithUs_MouseDown(object sender, MouseButtonEventArgs e)
         {
             AdvertiseWithUs.AdvertiseWithUs page = new AdvertiseWithUs.AdvertiseWithUs();
             MainWindow.Instance.NavigateToPage(page);
         }
+
+        //Point scrollMousePoint = new Point();
+        //double hOff = 1;
+        //private void ScrollViewer_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    scrollMousePoint = e.GetPosition(scrollViewer);
+        //    hOff = scrollViewer.VerticalOffset;
+        //    scrollViewer.CaptureMouse();
+        //}
+
+        //private void ScrollViewer_PreviewMouseMove(object sender, MouseEventArgs e)
+        //{
+        //    if (scrollViewer.IsMouseCaptured)
+        //    {
+        //        scrollViewer.ScrollToVerticalOffset(hOff + (scrollMousePoint.Y - e.GetPosition(scrollViewer).Y));
+        //    }
+        //}
+
+        //private void ScrollViewer_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        //{
+        //    scrollViewer.ReleaseMouseCapture();
+        //}
+
+        //private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        //{
+        //    scrollViewer.ScrollToHorizontalOffset(scrollViewer.VerticalOffset + e.Delta);
+        //}
     }
 } 
