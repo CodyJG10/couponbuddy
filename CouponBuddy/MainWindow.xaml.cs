@@ -48,8 +48,10 @@ namespace CouponBuddy
                 _instance = this;
                 InitializeComponent();
                 (ServiceLocator.Current.GetService(typeof(INavigationService)) as INavigationService).SetMainFrame(frameMain);
-                //WindowState = WindowState.Maximized;
-                //WindowStyle = WindowStyle.None;
+#if (!DEBUG)
+                WindowState = WindowState.Maximized;
+                WindowStyle = WindowStyle.None;
+#endif
                 Page page = new LoadingScreen();
                 frameMain.Navigate(page);
             }

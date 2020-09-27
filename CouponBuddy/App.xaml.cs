@@ -7,7 +7,6 @@ using CouponBuddy.Api;
 using CouponBuddy.Api.Interfaces;
 using CouponBuddy.Api.Managers;
 using CouponBuddy.Navigation;
-using CouponBuddy.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,11 +34,8 @@ namespace CouponBuddy
 
             IsFirstLaunch = Settings.Default.FIRST_LAUNCH;
 
-            if (!IsFirstLaunch) 
-            {
-                ConfigureServices();
-                MainWindow = new MainWindow();
-            }
+            MainWindow = new MainWindow();
+            MainWindow.Show();
         }
 
         private void ConfigureServices()

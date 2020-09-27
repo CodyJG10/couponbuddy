@@ -3,8 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CouponBuddy"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             StartupUri="MainWindow.xaml"
-             ShutdownMode="OnExplicitShutdown">
+             ShutdownMode="OnExplicitShutdown"
+             xmlns:ActiveScreen="clr-namespace:CouponBuddy.Views.ActiveScreen">
+
+    <!--StartupUri="MainWindow.xaml"-->
+
     <Application.Resources>
         <ResourceDictionary>
 
@@ -21,6 +24,15 @@
             <sys:Double x:Key="FONT_SIZE">50</sys:Double>
 
             <ImageSource x:Key="BACKGROUND_IMAGE">/Assets/background_1.png</ImageSource>
+
+            <sys:Double x:Key="CATEGORY_BUTTON_WIDTH">275</sys:Double>
+            <sys:Double x:Key="CATEGORY_BUTTON_HEIGHT">275</sys:Double>
+            <sys:Double x:Key="ACTIVE_SCREEN_BUTTON_PANEL_WIDTH">800</sys:Double>
+            <Style x:Key="CategoryButton" TargetType="ActiveScreen:CategoryButtonView">
+                <Setter Property="Width" Value="{StaticResource CATEGORY_BUTTON_WIDTH}"/>
+                <Setter Property="Height" Value="{StaticResource CATEGORY_BUTTON_HEIGHT}"/>
+                <Setter Property="Margin" Value="25,25,25,25" />
+            </Style>
 
         </ResourceDictionary>
     </Application.Resources>

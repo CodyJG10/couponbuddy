@@ -1,5 +1,5 @@
 ﻿using CommonServiceLocator;
-using CouponBuddy.Ads;
+using CouponBuddy.Controllers;
 using CouponBuddy.Api.Interfaces;
 using CouponBuddy.Api.Managers;
 using CouponBuddy.Controllers;
@@ -42,7 +42,7 @@ namespace CouponBuddy.ViewModels.LoadingScreen
 
             var vendors = await db.GetVendors(locationId).ConfigureAwait(true);
 
-            await AdManager.Instance.LoadAds();
+            await AdController.Instance.LoadAds();
             await VendorController.Instance.LoadVendors(vendors.ToList()).ConfigureAwait(true);
 
             Console.WriteLine("[Loading] Loaded all vendors and location ads");

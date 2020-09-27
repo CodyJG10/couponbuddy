@@ -1,5 +1,5 @@
 ﻿using CommonServiceLocator;
-using CouponBuddy.Ads;
+using CouponBuddy.Controllers;
 using CouponBuddy.Api;
 using CouponBuddy.Api.Interfaces;
 using CouponBuddy.Api.Managers;
@@ -38,8 +38,10 @@ namespace CouponBuddy.ViewModels.AdBanner
 
         private void Init()
         {
-            Timer timer = new Timer();
-            timer.Interval = 1000 * Properties.Settings.Default.INACTIVE_AD_DURATION;
+            Timer timer = new Timer
+            {
+                Interval = (1000 * Properties.Settings.Default.INACTIVE_AD_DURATION) * 2
+            };
             timer.Elapsed += Timer_Elapsed;
             timer.Start();
         }
@@ -52,7 +54,7 @@ namespace CouponBuddy.ViewModels.AdBanner
         private void LoadNextAd()
         {
             Console.WriteLine("[Ads] Loading next ad");
-            var ad = AdManager.Instance.GetNextAd();
+            var ad = AdController.Instance.GetNextAd();
             CurrentImage = ad;
         }
     }

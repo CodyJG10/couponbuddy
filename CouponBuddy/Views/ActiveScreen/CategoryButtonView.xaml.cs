@@ -92,7 +92,16 @@ namespace CouponBuddy.Views.ActiveScreen
         private void SetButtonImage(string path)
         {
             string uriPath = AppDomain.CurrentDomain.BaseDirectory + path;
-            buttonImage.ImageSource = new BitmapImage(new Uri(uriPath)) as ImageSource;
+            try
+            {
+                var img = new BitmapImage(new Uri(uriPath)) as ImageSource;
+                buttonImage.ImageSource = img;
+            }
+            catch 
+            {
+                var img = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "/Assets/404.png")) as ImageSource;
+                buttonImage.ImageSource = img;
+            }
         }
 
         #endregion

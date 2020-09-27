@@ -23,9 +23,10 @@
         </Rectangle>
 
         <Image Source="/Assets/button_icon.png"
-                   Width="250"
-                   Height="250"
-                   Grid.RowSpan="3"/>
+               Width="{StaticResource CATEGORY_BUTTON_WIDTH}"
+               Height="{StaticResource CATEGORY_BUTTON_HEIGHT}"
+               Stretch="Fill"
+               Grid.RowSpan="3"/>
 
         <Label Grid.Row="2"
                 Foreground="White"
