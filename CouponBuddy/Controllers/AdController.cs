@@ -13,18 +13,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms.PropertyGridInternal;
 using System.Windows.Media;
 
-namespace CouponBuddy.Ads
+namespace CouponBuddy.Controllers
 {
-    public class AdManager
+    public class AdController
     {
-        private static AdManager _instance;
-        public static AdManager Instance
+        private static AdController _instance;
+        public static AdController Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new AdManager();
+                    _instance = new AdController();
                 }
                 return _instance;
             }
