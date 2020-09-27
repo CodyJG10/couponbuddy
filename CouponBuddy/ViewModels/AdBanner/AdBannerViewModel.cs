@@ -36,7 +36,7 @@ namespace CouponBuddy.ViewModels.AdBanner
             Init();
         }
 
-        private async void Init()
+        private void Init()
         {
             Timer timer = new Timer();
             timer.Interval = 1000 * Properties.Settings.Default.INACTIVE_AD_DURATION;

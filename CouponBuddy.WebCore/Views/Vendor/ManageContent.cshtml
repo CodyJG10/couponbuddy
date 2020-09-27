@@ -8,11 +8,11 @@
 
 <h2>Manage Content</h2>
 
-<a asp-action="viewcoupons">Manage Coupons</a>
+<a class="btn btn-primary" role="button" asp-action="viewcoupons">Manage Coupons</a>
 
 <form method="post" enctype="multipart/form-data" asp-action="UploadLogo">
     <div class="form-group">
-
+ 
         <h1 class="form-control">Logo</h1>
 
         <img src="@Model.LogoImageUrl" width="250" height="250" />

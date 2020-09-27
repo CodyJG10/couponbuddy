@@ -63,14 +63,10 @@
         <StackPanel Grid.Column="1"
                     Grid.Row="1">
 
-            <Label HorizontalAlignment="Center"
+            <Label  Content="{Binding Vendor.Name}"
+                    FontSize="35"
                     HorizontalContentAlignment="Center"
-                   Margin="5">
-                <TextBlock Text="{Binding Vendor.Name}"
-                           FontSize="35"
-                           Foreground="{StaticResource FONT_COLOR}"
-                           TextWrapping="WrapWithOverflow" Width="500"/>
-            </Label>
+                    Foreground="{StaticResource FONT_COLOR}"/>
 
             <Label Content="{Binding Vendor.Address}"
                    HorizontalContentAlignment="Center"
