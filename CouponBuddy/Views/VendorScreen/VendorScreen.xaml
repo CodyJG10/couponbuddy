@@ -15,7 +15,7 @@
             <Setter Property="Width" Value="300"/>
             <Setter Property="Height" Value="150"/>
             <Setter Property="Margin" Value="25" />
-            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontSize" Value="22"/>
         </Style>
     </Page.Resources>
 
@@ -52,9 +52,9 @@
             </Grid.RowDefinitions>
 
             <Image Source="{Binding Image}"
-                   VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch"
-                   Stretch="Fill"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Stretch="Uniform"
                    Grid.Row="0"
                    Margin="17,0,0,0" Grid.ColumnSpan="2" Grid.Column="1"/>
 
@@ -79,9 +79,8 @@
                    Foreground="{StaticResource FONT_COLOR}"/>
 
             <Image Source="{Binding QrCodeImage}"
-                   Width="100"
-                   Height="100"
-                   HorizontalAlignment="Stretch"
+                   Width="125"
+                   Height="125"
                    x:Name="imgQrCode"/>
 
         </StackPanel>

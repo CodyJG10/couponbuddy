@@ -15,7 +15,7 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontSize" Value="23"/>
             <Setter Property="Foreground" Value="White"/>
         </Style>
     </Page.Resources>
@@ -27,7 +27,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="7*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
         <sharedviews:BackButton Width="48"
@@ -42,64 +42,75 @@
             <Label Content="{Binding Coupon.Instructions}"
                    Style="{StaticResource InformationLabel}"/>
 
-            <StackPanel>
-                <StackPanel HorizontalAlignment="Center"
-                        Margin="0,15">
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Email Coupon To Yourself:"
-                           Foreground="White"
-                           FontSize="45"
-                           Margin="0,0,50,0"/>
-                        <TextBox Width="450"
-                             Text="codyjg10@gmail.com"
-                             FontSize="35"
-                             HorizontalContentAlignment="Center"
-                             VerticalContentAlignment="Center"
-                             x:Name="txtEmail"/>
-                    </StackPanel>
-                    <Button Content="Send"
-                            x:Name="btnSendEmail"
-                            Click="BtnSendEmail_Click"
-                            Height="75"
-                            Width="250"
-                            Margin="0, 25"
-                            FontSize="45"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Center"
-                        Margin="0,15">
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Text Coupon To Yourself:"
-                           Foreground="White"
-                           FontSize="45"
-                           Margin="0,0,50,0"/>
-                        <TextBox Width="450"
-                             FontSize="45"
-                             Text="6093161245"
-                             HorizontalContentAlignment="Center"
-                             VerticalContentAlignment="Center"
+                <StackPanel>
+                    <Border Margin="15"
+                            BorderBrush="{StaticResource COLOR_PRIMARY}" 
+                            BorderThickness="1"
+                            CornerRadius="25">
+                        <StackPanel HorizontalAlignment="Center"
+                                Margin="0,15">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Email Coupon To Yourself:"
+                                   Foreground="White"
+                                   FontSize="45"
+                                   Margin="0,0,50,0"/>
+                                <TextBox Width="450"
+                                     Text="codyjg10@gmail.com"
+                                     FontSize="35"
+                                     HorizontalContentAlignment="Center"
+                                     VerticalContentAlignment="Center"
+                                     x:Name="txtEmail"/>
+                            </StackPanel>
+                    
+                            <Button Content="Send"
+                                    x:Name="btnSendEmail"
+                                    Click="BtnSendEmail_Click"
+                                    Height="75"
+                                    Width="250"
+                                    Margin="0, 25"
+                                    FontSize="45"/>
+                        </StackPanel>
+                    </Border>
+                <Border Margin="15" 
+                        BorderBrush="{StaticResource COLOR_PRIMARY}"
+                        BorderThickness="1"
+                        CornerRadius="25">
+                    <StackPanel HorizontalAlignment="Center"
+                            Margin="0,15">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Text Coupon To Yourself:"
+                               Foreground="White"
+                               FontSize="45"
+                               Margin="0,0,50,0"/>
+                            <TextBox Width="450"
+                                 FontSize="45"
+                                 Text="6093161245"
+                                 HorizontalContentAlignment="Center"
+                                 VerticalContentAlignment="Center"
                             
-                             x:Name="txtPhoneNumber"/>
+                                 x:Name="txtPhoneNumber"/>
+                        </StackPanel>
+                        <Button Content="Send"
+                                x:Name="btnSendText"
+                                Click="BtnSendText_Click"
+                                Height="75"
+                                Width="250"
+                                Margin="0, 25"
+                                FontSize="45"/>
                     </StackPanel>
-                    <Button Content="Send"
-                            x:Name="btnSendText"
-                            Click="BtnSendText_Click"
-                            Height="75"
-                            Width="250"
-                            Margin="0, 25"
-                            FontSize="45"/>
-                </StackPanel>
+                </Border>
+
 
                 <StackPanel HorizontalAlignment="Center">
-                    <Label Content="Or scan below"
-                           Foreground="White"
-                           FontSize="45"
-                           Margin="0,0,50,0"/>
-                    <Image Source="{Binding QrCodeImage}"
-                           Width="85"
-                           Height="85"
-                           HorizontalAlignment="Center"/>
-                </StackPanel>
-
+                        <Label Content="Or scan below"
+                               Foreground="White"
+                               FontSize="45"
+                               Margin="0,0,50,0"/>
+                        <Image Source="{Binding QrCodeImage}"
+                               Width="85"
+                               Height="85"
+                               HorizontalAlignment="Center"/>
+                    </StackPanel>
             </StackPanel>
         </StackPanel>
     </Grid>

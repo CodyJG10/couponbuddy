@@ -207,7 +207,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Admin\FirstLaunch.xaml.cs">
+    <Compile Include="Views\Admin\FirstLaunch.xaml.cs">
       <DependentUpon>FirstLaunch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AdController.cs" />
@@ -264,7 +264,7 @@
     <Compile Include="Views\VendorScreen\VendorScreen.xaml.cs">
       <DependentUpon>VendorScreen.xaml</DependentUpon>
     </Compile>
-    <Page Include="Admin\FirstLaunch.xaml">
+    <Page Include="Views\Admin\FirstLaunch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
