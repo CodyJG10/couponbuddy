@@ -1,4 +1,5 @@
 ﻿using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Specialized;
 using CouponBuddy.Entities;
 using CouponBuddy.Util;
 using Microsoft.AspNetCore.Http;
@@ -29,6 +30,7 @@ namespace CouponBuddy.Web.Storage
             using (var stream = file.OpenReadStream())
             {
                 BlobClient blobClient = containerClient.GetBlobClient(fileName);
+                await blobClient.DeleteIfExistsAsync();
                 await blobClient.UploadAsync(stream);
             }
             return true;
@@ -42,6 +44,7 @@ namespace CouponBuddy.Web.Storage
             using (var stream = file.OpenReadStream())
             {
                 BlobClient blobClient = containerClient.GetBlobClient(fileName);
+                await blobClient.DeleteIfExistsAsync();
                 await blobClient.UploadAsync(stream);
             }
             return true;

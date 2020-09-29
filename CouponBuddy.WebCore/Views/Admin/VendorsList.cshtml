@@ -2,10 +2,12 @@
 @using CouponBuddy.Entities;
 @using  CouponBuddy.Web.Data;
 @using System.Text;
+@using CouponBuddy.WebCore.PageUtil;
 
 @inject ApplicationDbContext _context;
+@*@model IEnumerable<CouponBuddy.Entities.Vendor>*@
 
-@model IEnumerable<CouponBuddy.Entities.Vendor>
+@model PaginatedList<CouponBuddy.Entities.Vendor>
 
 @{
     ViewData["Title"] = "VendorsList";
@@ -17,23 +19,34 @@
 <p>
     <a asp-action="Create" class="btn btn-default" role="button">Create New</a>
 </p>
+
+<form asp-action="VendorsList" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="VendorsList">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Phone)
+                Phone
             </th>
             <th>
-                <label>Category</label>
+                <a asp-action="VendorsList" asp-route-sortOrder="@ViewData["CategorySortParm"]">Category</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Username)
+                Username
             </th>
             <th>
-                <label>Locations</label>
+                <a asp-action="VendorsList" asp-route-sortOrder="@ViewData["LocationSortParm"]">Locations</a>
             </th>
             <th></th>
         </tr>
@@ -87,9 +100,30 @@
                 <td>
                     <a asp-action="ViewEditVendor" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="VendorDetails" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="DeleteVendor" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="DeleteVendor" asp-route-id="@item.Id">Delete</a> |
+                    <a asp-action="ManageVendorContent" asp-route-id="@item.Id">Manage Content</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="VendorsList"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="VendorsLIst"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

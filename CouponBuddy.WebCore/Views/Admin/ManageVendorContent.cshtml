@@ -1,0 +1,48 @@
+﻿@using CouponBuddy.Web.Models
+@model ManageContentViewModel
+
+
+@{
+    ViewData["Title"] = "Manage Content";
+}
+
+<h2>Manage Content</h2>
+
+<a class="btn btn-primary" role="button" asp-action="viewcoupons">Manage Coupons</a>
+
+<form method="post" enctype="multipart/form-data" asp-action="UploadLogo">
+    <div class="form-group">
+ 
+        <h1 class="form-control">Logo</h1>
+
+        <img src="@Model.LogoImageUrl" width="250" height="250" />
+
+        <div>
+            <p>Upload Logo Image Here</p>
+            <input type="file" name="files" />
+        </div>
+
+        <div>
+            <input class="btn btn-primary" type="submit" value="Upload" />
+        </div>
+
+    </div>
+</form>
+
+<form method="post" enctype="multipart/form-data" asp-action="UploadInactive">
+    <div class="form-group">
+
+        <h3 class="form-control">Inactive Ad</h3>
+        <img src="@Model.InactiveImageUrl" width="250" height="250" />
+
+        <div>
+            <p>Upload Inactive Image Here</p>
+            <input type="file" name="files" />
+        </div>
+
+        <div>
+            <input class="btn btn-primary" type="submit" value="Upload" />
+        </div>
+
+    </div>
+</form>

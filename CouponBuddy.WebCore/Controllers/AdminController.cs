@@ -12,6 +12,10 @@ using CouponBuddy.Web.Areas.Identity;
 using static CouponBuddy.Web.Areas.Identity.User;
 using Newtonsoft.Json;
 using CouponBuddy.Entities;
+using CouponBuddy.WebCore.PageUtil;
+using Microsoft.AspNetCore.Http;
+using CouponBuddy.Web.Storage;
+using CouponBuddy.WebCore.Storage;
 
 namespace CouponBuddy.Web.Controllers
 {
@@ -22,15 +26,21 @@ namespace CouponBuddy.Web.Controllers
         private readonly ApplicationDbContext _context;
         private UserManager<User> _userManager;
         private RoleManager<IdentityRole> _roleManager;
+        private FileManager _fileManager;
+        private ImageLoader _imageLoader;
         #endregion
 
         public AdminController(ApplicationDbContext context,
             RoleManager<IdentityRole> roleManager,
-            UserManager<User> userManager)
+            UserManager<User> userManager,
+            FileManager fileManager,
+            ImageLoader imageLoader)
         {
             _context = context;
             _roleManager = roleManager;
             _userManager = userManager;
+            _fileManager = fileManager;
+            _imageLoader = imageLoader;
         }
 
         [Route("")]
@@ -126,10 +136,54 @@ namespace CouponBuddy.Web.Controllers
         }
 
         [HttpGet("VendorsList")]
-        public IActionResult VendorsList()
+        public IActionResult VendorsList(string sortOrder,
+                                         string searchString,
+                                         string currentFilter,
+                                         int? pageNumber)
         {
-            var vendors = _context.Vendors.ToList();
-            return View(vendors);
+            ViewData["CategorySortParm"] = sortOrder == "Category" ? "cat_desc" : "Category";
+            ViewData["LocationSortParm"] = sortOrder == "Location" ? "location_desc" : "";
+            ViewData["CurrentFilter"] = searchString;
+            ViewData["CurrentSort"] = sortOrder;
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            var vendors = _context.Vendors.ToList().AsQueryable();
+            if (!string.IsNullOrEmpty(searchString))
+            {
+               vendors = vendors.Where(v => v.GetLocations().Count > 0
+                    && _context.Locations.ToList()
+                        .Where(x => x.Id == v.GetLocations()[0])
+                        .SingleOrDefault().Name.ToLower()
+                        .Contains(searchString.ToLower())
+                    || Categories.GetCategory(v.CategoryId).DisplayName.Contains(searchString)
+                    || v.Name.Contains(searchString))
+                    .AsQueryable();
+            }
+            switch (sortOrder)
+            {
+                case "cat_desc":
+                    vendors = vendors.OrderByDescending(v => v.CategoryId);
+                    break;
+                case "Category":
+                    vendors = vendors.OrderBy(v => v.CategoryId);
+                    break;
+                case "location_desc":
+                    vendors = vendors.AsEnumerable().OrderByDescending(x => x.GetLocations()[0].Contains(searchString)).AsQueryable();
+                    break;
+                default:
+                    vendors = vendors.OrderBy(s => s.Name);
+                    break;
+            }
+            int pageSize = 10;
+            return View(PaginatedList<Vendor>.CreateAsync(vendors.ToList(), pageNumber ?? 1, pageSize));
         }
 
         [HttpGet("AddVendorToLocation")]
@@ -182,6 +236,99 @@ namespace CouponBuddy.Web.Controllers
             var vendor = _context.Vendors.SingleOrDefault(x => x.Id == id);
             return View(vendor);
         }
+
+        #region Manage Vendor Content
+
+        [HttpGet("ManageVendorContent/{id}")]
+        public IActionResult ViewManageVendorContent([FromRoute] int id)
+        {
+            TempData["ID"] = id;
+            var vendor = _context.Vendors.Single(x => x.Id == id);
+            return View("ManageVendorContent", new ManageContentViewModel(vendor, _context, _imageLoader));
+        }
+
+        [HttpPost("UploadLogo/{id}")]
+        public async Task<ActionResult> UploadLogo([FromRoute]int id, List<IFormFile> files)
+        {
+            var vendor = _context.Vendors.Single(x => x.Id == id);
+            if (files.Count == 0) return Content("Invalid File");
+            await _fileManager.UploadFile(files[0], "logo", vendor);
+            return RedirectToAction("ManageVendorContent", new { id = id });
+        }
+
+        [HttpPost("UploadInactive/{id}")]
+        public async Task<IActionResult> UploadInactive([FromRoute]int id, List<IFormFile> files)
+        {
+            var vendor = _context.Vendors.Single(x => x.Id == id);
+            if (files.Count == 0) return Content("Invalid File");
+            await _fileManager.UploadFile(files[0], "inactive", vendor);
+            return RedirectToAction("ManageVendorContent", new { id = id });
+        }
+
+        #region Coupons
+
+        [HttpGet("CreateCoupon")]
+        public IActionResult ViewCreateCoupon()
+        {
+            return View("CreateCoupon");
+        }
+
+        [HttpGet("DeleteCoupon")]
+        public IActionResult ViewDeleteCoupon(int id)
+        {
+            var coupon = _context.VendorCoupons.Single(x => x.Id == id);
+            return View("DeleteCoupon", coupon);
+        }
+
+        [HttpGet("EditCoupon")]
+        public IActionResult ViewEditCoupon(int id)
+        {
+            var coupon = _context.VendorCoupons.Single(x => x.Id == id);
+            return View("EditCoupon", coupon);
+        }
+
+        [HttpGet("Coupons")]
+        public IActionResult ViewCoupons()
+        {
+            int id = (int)TempData["ID"];
+            TempData.Keep();
+            var vendor = _context.Vendors.Single(x => x.Id == id);
+            var coupons = _context.VendorCoupons.Where(x => x.VendorId == vendor.Id);
+            return View("ViewCoupons", coupons);
+        }
+
+        [HttpPost("CreateCoupon")]
+        public async Task<IActionResult> CreateCoupon(VendorCoupon coupon)
+        {
+            coupon.IsActive = true;
+            int id = (int)TempData["ID"];
+            TempData.Keep();
+            coupon.VendorId = id;
+            _context.VendorCoupons.Add(coupon);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("VendorsList");
+        }
+
+        [HttpPost("EditCoupon")]
+        public async Task<IActionResult> EditCoupon(VendorCoupon coupon)
+        {
+            _context.Update(coupon);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("VendorsList");
+        }
+
+        [HttpPost("DeleteCoupon")]
+        public async Task<IActionResult> DeleteCoupon(int id)
+        {
+            var coupon = _context.VendorCoupons.Single(x => x.Id == id);
+            _context.Remove(coupon);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("VendorsList");
+        }
+
+        #endregion
+
+        #endregion
 
         [HttpGet("DeleteVendor/{id}")]
         public IActionResult ViewDeleteVendor([FromRoute]int id)
