@@ -18,7 +18,7 @@
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>ftp://ftp.acegaminglounge.com/coupon-demo/</PublishUrl>
+    <PublishUrl>ftp://ftp.acegaminglounge.com/pg-technologies.com/coupon-demo/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -28,14 +28,15 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://pg-technologies.com/demo-program/</InstallUrl>
+    <InstallUrl>http://pg-technologies.com/coupon-demo/</InstallUrl>
+    <SupportUrl>https://pg-technologies.com</SupportUrl>
     <TargetCulture>en</TargetCulture>
-    <ProductName>Contractor Buddy</ProductName>
-    <PublisherName>Ace Software</PublisherName>
+    <ProductName>Coupon Buddy</ProductName>
+    <PublisherName>PG Technologies, LLC</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>15</ApplicationRevision>
-    <ApplicationVersion>1.2.1.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>2.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -65,7 +66,7 @@
     </CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>C71314F09386B6B76C78A6416137E219E4AC7FC7</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>F27CB8ABE85003D98053D753A4BCF0CF4F53E245</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
