@@ -9,5 +9,6 @@ namespace CouponBuddy.Web.Models
     {
         public string Username { get; set; }
         public string LocationId { get; set; }
+        public Dictionary<string, string> Locations { get; set; }
     }
 }

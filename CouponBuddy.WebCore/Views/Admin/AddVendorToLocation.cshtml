@@ -9,12 +9,18 @@
 
 <form asp-action="AddVendorToLocation" method="post" class="form-group">
     <div class="form-group">
-        <label class="form-control">Username</label>
+        <label>Username</label>
         <input type="text" class="form-control" asp-for="Username" />
     </div>
     <div class="form-group">
-        <label class="form-control">Location ID</label>
-        <input type="text" class="form-control" asp-for="LocationId" />
+        <label>Location</label>
+        <select class="form-control" asp-for="LocationId">
+            @foreach (var locationId in Model.Locations.Keys)
+            {
+                string locationName = Model.Locations[locationId];
+                <option value="@locationId">@locationName</option>
+            }
+        </select>
     </div>
     <div class="form-group">
         <input type="submit" class="form-control" value="Add" />

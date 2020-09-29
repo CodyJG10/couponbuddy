@@ -189,7 +189,12 @@ namespace CouponBuddy.Web.Controllers
         [HttpGet("AddVendorToLocation")]
         public IActionResult ViewAddVendorToLocation()
         {
-            return View("AddVendorToLocation");
+            Dictionary<string, string> locations = new Dictionary<string, string>();
+            foreach (var x in _context.Locations.ToList())
+            {
+                locations.Add(x.Id, x.Name);
+            }
+            return View("AddVendorToLocation", new AddVendorToLocationViewModel() { Locations = locations });
         }
 
         [HttpPost("AddVendorToLocation")]
@@ -212,7 +217,7 @@ namespace CouponBuddy.Web.Controllers
             LocationReference locationRef = new LocationReference()
             {
                 LocationId = model.LocationId,
-                UserId = user.Id
+                UserId = user.Id,
             };
 
             if (user.UserLocations == null) user.UserLocations = new List<LocationReference>();
@@ -449,7 +454,12 @@ namespace CouponBuddy.Web.Controllers
         [HttpGet("CreateLocationManager")]
         public IActionResult ViewCreateCreateLocationManager()
         {
-            return View("CreateLocationManager");
+            Dictionary<string, string> locations = new Dictionary<string, string>();
+            foreach (var x in _context.Locations.ToList())
+            {
+                locations.Add(x.Id, x.Name);
+            }
+            return View("CreateLocationManager", locations);
         }
 
         [HttpPost("CreateLocationManager")]

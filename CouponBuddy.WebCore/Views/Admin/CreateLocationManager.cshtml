@@ -1,4 +1,5 @@
-﻿
+﻿@model Dictionary<string, string>
+
 @{
     ViewData["Title"] = "CreateLocationManager";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,12 +9,18 @@
 
 <form asp-action="CreateLocationManager" method="post" class="form-group">
     <div class="form-group">
-        <label class="form-control">Username</label>
+        <label>Username</label>
         <input type="text" class="form-control" name="username" />
     </div>
     <div class="form-group">
-        <label class="form-control">Location ID</label>
-        <input type="text" class="form-control" name="locationId" />
+        <label>Location</label>
+        <select class="form-control" name="locationId">
+            @foreach (var locationId in Model.Keys)
+            {
+                string locationName = Model[locationId];
+                <option value="@locationId">@locationName</option>
+            }
+        </select>
     </div>
     <div class="form-group">
         <input type="submit" class="form-control" />
