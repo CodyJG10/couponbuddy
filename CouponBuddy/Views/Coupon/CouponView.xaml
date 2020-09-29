@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CouponBuddy.Views.Coupon"
       xmlns:sharedviews="clr-namespace:CouponBuddy.Views.Shared"
+      xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
       d:DesignHeight="1720" d:DesignWidth="1080"
       Title="CouponView"
@@ -62,7 +63,7 @@
                                      x:Name="txtEmail"/>
                             </StackPanel>
                     
-                            <Button Content="Send"
+                            <Button Content="Send Email"
                                     x:Name="btnSendEmail"
                                     Click="BtnSendEmail_Click"
                                     Height="75"
@@ -82,15 +83,14 @@
                                Foreground="White"
                                FontSize="45"
                                Margin="0,0,50,0"/>
-                            <TextBox Width="450"
-                                 FontSize="45"
-                                 Text="6093161245"
-                                 HorizontalContentAlignment="Center"
-                                 VerticalContentAlignment="Center"
-                            
-                                 x:Name="txtPhoneNumber"/>
+                            <wpfx:MaskedTextBox Width="350" 
+                                                Mask="(000) 000-0000"
+                                                FontSize="45"
+                                                HorizontalContentAlignment="Center"
+                                                VerticalContentAlignment="Center"
+                                                x:Name="txtPhoneNumber"/>
                         </StackPanel>
-                        <Button Content="Send"
+                        <Button Content="Send Text"
                                 x:Name="btnSendText"
                                 Click="BtnSendText_Click"
                                 Height="75"
