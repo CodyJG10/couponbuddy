@@ -25,10 +25,18 @@ namespace CouponBuddy.Views.VendorScreen
             DataContext = new VendorScreenViewModel(vendor);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    VendorScreenViewModel viewModel = DataContext as VendorScreenViewModel;
+        //    Button button = sender as Button;
+        //    int id = int.Parse(button.Tag.ToString());
+        //    viewModel.CouponButtonClicked(id);
+        //}
+
+        private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
             VendorScreenViewModel viewModel = DataContext as VendorScreenViewModel;
-            Button button = sender as Button;
+            var button = sender as Grid;
             int id = int.Parse(button.Tag.ToString());
             viewModel.CouponButtonClicked(id);
         }

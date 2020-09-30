@@ -33,6 +33,9 @@
                Grid.Row="1"
                x:Name="frameMain"
                NavigationUIVisibility="Hidden"
-               Navigating="FrameMain_Navigating" Grid.RowSpan="2"/>
+               Navigating="FrameMain_Navigating" 
+               Grid.RowSpan="2"
+               BorderBrush="DarkKhaki"
+               BorderThickness="0 5 0 0"/>
     </Grid>
 </Window>
