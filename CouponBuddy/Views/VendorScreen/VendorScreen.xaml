@@ -96,7 +96,7 @@
                         TextWrapping="WrapWithOverflow" Width="900" Height="200"/>
             </Label>
 
-            <Label Content="Coupons"
+            <Label Content="Tap To Get Coupon"
                    FontSize="35"
                    HorizontalAlignment="Center"
                    Foreground="{StaticResource FONT_COLOR}"/>
