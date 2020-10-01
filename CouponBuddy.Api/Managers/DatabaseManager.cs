@@ -99,25 +99,29 @@ namespace CouponBuddy.Api.Managers
             return JsonConvert.DeserializeObject<IEnumerable<VendorMedia>>(content);
         }
 
+        public async Task<IEnumerable<VendorCoupon>> GetVendorCoupons(int vendorId)
+        {
+            var result = await _client.GetAsync("coupons/" + vendorId);
+            var content = await result.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<IEnumerable<VendorCoupon>>(content);
+        }
+
         public async void AddImpression(Vendor vendor, string locationId)
         {
             var result = await _client.PutAsync("AddVendorImpression/" + vendor.Id.ToString() + "/" + locationId, null);
             var content = await result.Content.ReadAsStringAsync();
-            Console.WriteLine(content);
         }
 
         public async void AddClick(Vendor vendor, string locationId)
         {
             var result = await _client.PutAsync("AddVendorClick/" + vendor.Id.ToString() + "/" + locationId, null);
             var content = await result.Content.ReadAsStringAsync();
-            Console.WriteLine(content);
         }
 
-        public async Task<IEnumerable<VendorCoupon>> GetVendorCoupons(int vendorId)
+        public async void AddVendorCouponSent(Vendor vendor, string locationId)
         {
-            var result = await _client.GetAsync("coupons/" + vendorId);
+            var result = await _client.PutAsync("AddVendorCouponSent/" + vendor.Id.ToString() + "/" + locationId, null);
             var content = await result.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<IEnumerable<VendorCoupon>>(content);
         }
     }
 }

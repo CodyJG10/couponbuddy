@@ -12,6 +12,7 @@ namespace CouponBuddy.Entities
         public string LocationId { get; set; }
         public string VendorImpressionsJson { get; set; }
         public string VendorClicksJson { get; set; }
+        public string CouponsSentJson { get; set; }
 
         #region Helpers
         public List<DateTime> GetImpressions()
@@ -38,6 +39,18 @@ namespace CouponBuddy.Entities
             }
         }
 
+        public List<DateTime> GetCouponsSent()
+        {
+            if (!string.IsNullOrEmpty(CouponsSentJson))
+            {
+                return JsonConvert.DeserializeObject<List<DateTime>>(CouponsSentJson);
+            }
+            else
+            {
+                return new List<DateTime>();
+            }
+        }
+
         public void AddImpression(DateTime dateTime)
         {
             var impressions = GetImpressions();
@@ -50,6 +63,13 @@ namespace CouponBuddy.Entities
             var clicks = GetClicks();
             clicks.Add(dateTime);
             VendorClicksJson = JsonConvert.SerializeObject(clicks);
+        }
+
+        public void AddCouponSent(DateTime dateTime)
+        {
+            var couponsSent = GetCouponsSent();
+            couponsSent.Add(dateTime);
+            CouponsSentJson = JsonConvert.SerializeObject(couponsSent);
         }
 
         public List<DateTime> GetCurrentMonthsImpressions()
@@ -80,6 +100,21 @@ namespace CouponBuddy.Entities
                 }
             }
             return thisMonthClicks;
+        }
+
+        public List<DateTime> GetCurrentMonthCouponsSent()
+        {
+            var allCouponsSent = GetCouponsSent();
+            int month = DateTime.Now.Month;
+            List<DateTime> thisMonthCoupons = new List<DateTime>();
+            foreach (var coupon in allCouponsSent)
+            {
+                if (coupon.Month == month && coupon.Year == DateTime.Now.Year)
+                {
+                    thisMonthCoupons.Add(coupon);
+                }
+            }
+            return thisMonthCoupons;
         }
         #endregion
     }

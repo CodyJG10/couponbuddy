@@ -18,7 +18,7 @@
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>ftp://ftp.acegaminglounge.com/pg-technologies.com/coupon-demo/</PublishUrl>
+    <PublishUrl>ftp://ftp.acegaminglounge.com/pg-technologies.com/coupon-buddy/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -28,14 +28,14 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://pg-technologies.com/coupon-demo/</InstallUrl>
+    <InstallUrl>http://pg-technologies.com/coupon-buddy/</InstallUrl>
     <SupportUrl>https://pg-technologies.com</SupportUrl>
     <TargetCulture>en</TargetCulture>
     <ProductName>Coupon Buddy</ProductName>
     <PublisherName>PG Technologies, LLC</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>2.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>

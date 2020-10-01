@@ -138,5 +138,33 @@ namespace CouponBuddy.Web.Controllers
             }
             return Content("Succesfully updated vendor analytics");
         }
+
+        [HttpPut("AddVendorCouponSent/{vendorId}/{locationId}")]
+        public IActionResult AddVendorCouponSent([FromRoute] int vendorId, [FromRoute] string locationId)
+        {
+            //First find if analytics exist
+            try
+            {
+                //If no exception, analytics exist
+                var analytics = _context.VendorAnalytics.Single(x => x.VendorId == vendorId.ToString() &&
+                                                                x.LocationId == locationId);
+                analytics.AddCouponSent(DateTime.Now);
+                _context.Update(analytics);
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                //if exception, we need to create analytics
+                VendorAnalytics analytics = new VendorAnalytics()
+                {
+                    LocationId = locationId,
+                    VendorId = vendorId.ToString()
+                };
+                analytics.AddCouponSent(DateTime.Now);
+                _context.VendorAnalytics.Add(analytics);
+                _context.SaveChanges();
+            }
+            return Content("Succesfully updated vendor analytics");
+        }
     }
 }

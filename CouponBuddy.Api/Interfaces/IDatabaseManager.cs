@@ -18,5 +18,6 @@ namespace CouponBuddy.Api.Interfaces
         Task<IEnumerable<VendorCoupon>> GetVendorCoupons(int vendorId);
         void AddImpression(Vendor vendor, string locationId);
         void AddClick(Vendor vendor, string locationId);
+        void AddVendorCouponSent(Vendor vendor, string locationId);
     }
 }
