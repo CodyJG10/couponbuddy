@@ -68,6 +68,9 @@ namespace CouponBuddy.Controllers
                     var logoImg = await imgLoader.DownloadBlob(containerName, "logo");
                     vendorMedia.logoImage = logoImg;
 
+                    var homeImg = await imgLoader.DownloadBlob(containerName, "home");
+                    vendorMedia.homeImage = homeImg;
+
                     var coupons = await _db.GetVendorCoupons(vendor.Id);
 
                     this.coupons.Add(vendor.Id, coupons.ToList());

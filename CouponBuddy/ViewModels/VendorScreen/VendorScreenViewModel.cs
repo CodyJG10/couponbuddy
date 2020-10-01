@@ -73,7 +73,7 @@ namespace CouponBuddy.ViewModels.VendorScreen
         private void LoadMedia()
         {
             var vendorMedia = VendorController.Instance.GetVendorMedia(Vendor.Id);
-            Image = vendorMedia.logoImage;
+            Image = vendorMedia.homeImage;
         }
 
         private void LoadQrCode()

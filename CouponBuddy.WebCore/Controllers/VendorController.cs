@@ -82,6 +82,15 @@ namespace CouponBuddy.Web.Controllers
             await _fileManager.UploadFile(files[0], "inactive", _vendor);
             return RedirectToAction("ManageContent");
         }
+
+        [HttpPost("UploadHome/{id}")]
+        public async Task<IActionResult> UploadHome([FromRoute] int id, List<IFormFile> files)
+        {
+            var vendor = _context.Vendors.Single(x => x.Id == id);
+            if (files.Count == 0) return Content("Invalid File");
+            await _fileManager.UploadFile(files[0], "home", vendor);
+            return RedirectToAction("ManageVendorContent", new { id = id });
+        }
         #region Coupons
 
         [HttpGet("CreateCoupon")]

@@ -46,3 +46,21 @@
 
     </div>
 </form>
+
+<form method="post" enctype="multipart/form-data" asp-action="UploadHome">
+    <div class="form-group">
+
+        <h3 class="form-control">Vendor Page Ad</h3>
+        <img src="@Model.HomePageImageUrl" width="250" height="250" />
+
+        <div>
+            <p>Upload Home Image Here</p>
+            <input type="file" name="files" />
+        </div>
+
+        <div>
+            <input class="btn btn-primary" type="submit" value="Upload" />
+        </div>
+
+    </div>
+</form>

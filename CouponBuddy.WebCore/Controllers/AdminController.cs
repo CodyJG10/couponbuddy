@@ -158,13 +158,14 @@ namespace CouponBuddy.Web.Controllers
             var vendors = _context.Vendors.ToList().AsQueryable();
             if (!string.IsNullOrEmpty(searchString))
             {
-               vendors = vendors.Where(v => v.GetLocations().Count > 0
-                    && _context.Locations.ToList()
-                        .Where(x => x.Id == v.GetLocations()[0])
-                        .SingleOrDefault().Name.ToLower()
-                        .Contains(searchString.ToLower())
-                    || Categories.GetCategory(v.CategoryId).DisplayName.Contains(searchString)
-                    || v.Name.Contains(searchString))
+                vendors = vendors.Where(v => v.GetLocations().Count > 0
+                     && _context.Locations.ToList()
+                         .Where(x => x.Id == v.GetLocations()[0])
+                         .SingleOrDefault().Name.ToLower()
+                         .Contains(searchString.ToLower())
+                     || Categories.GetCategory(v.CategoryId).DisplayName.Contains(searchString)
+                     || v.Name.ToLower().Contains(searchString.ToLower())
+                     || v.Username.ToLower().Contains(searchString.ToLower()))
                     .AsQueryable();
             }
             switch (sortOrder)
@@ -267,6 +268,15 @@ namespace CouponBuddy.Web.Controllers
             var vendor = _context.Vendors.Single(x => x.Id == id);
             if (files.Count == 0) return Content("Invalid File");
             await _fileManager.UploadFile(files[0], "inactive", vendor);
+            return RedirectToAction("ManageVendorContent", new { id = id });
+        }
+
+        [HttpPost("UploadHome/{id}")]
+        public async Task<IActionResult> UploadHome([FromRoute] int id, List<IFormFile> files)
+        {
+            var vendor = _context.Vendors.Single(x => x.Id == id);
+            if (files.Count == 0) return Content("Invalid File");
+            await _fileManager.UploadFile(files[0], "home", vendor);
             return RedirectToAction("ManageVendorContent", new { id = id });
         }
 
