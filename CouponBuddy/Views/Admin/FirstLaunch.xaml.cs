@@ -30,12 +30,14 @@ namespace CouponBuddy.Admin
                 int adDuration = int.Parse(txtInactiveAdDuration.Text);
                 int timeout = int.Parse(txtInactivityTimeout.Text);
                 string locationId = txtLocationId.Text;
+                int deviceId = int.Parse(txtDeviceId.Text);
 
                 Properties.Settings.Default["DATABASE_USERNAME"] = username;
                 Properties.Settings.Default["DATABASE_PASSWORD"] = password;
                 Properties.Settings.Default["INACTIVE_AD_DURATION"] = adDuration;
                 Properties.Settings.Default["INACTIVITY_TIMEOUT"] = timeout;
                 Properties.Settings.Default["LOCATION_ID"] = locationId;
+                Properties.Settings.Default["DEVICE_ID"] = deviceId;
                 Properties.Settings.Default["FIRST_LAUNCH"] = false;
 
                 Properties.Settings.Default.Save();

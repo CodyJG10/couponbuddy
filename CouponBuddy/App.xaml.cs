@@ -19,6 +19,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using IContainer = Autofac.IContainer;
 using CouponBuddy.Admin;
+using CouponBuddy.Entities;
 
 namespace CouponBuddy
 {
@@ -36,7 +37,7 @@ namespace CouponBuddy
             IsFirstLaunch = Settings.Default.FIRST_LAUNCH;
 
             if (!IsFirstLaunch)
-            {
+            { 
                 MainWindow = new MainWindow();
             }
             else

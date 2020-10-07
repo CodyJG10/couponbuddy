@@ -47,6 +47,16 @@ namespace CouponBuddy.ViewModels.LoadingScreen
 
             Console.WriteLine("[Loading] Loaded all vendors and location ads");
 
+#if (!DEBUG)
+            var location = await db.GetLocation(Settings.Default.LOCATION_ID);
+            UptimeReport report = new UptimeReport()
+            {
+                Active = true,
+                DeviceId = Settings.Default.DEVICE_ID,
+                LocationName = location.Name
+            };
+            await db.UpdateUptime(report);
+#endif
             Application.Current.Dispatcher.Invoke(delegate
             {
                 var screen = new Views.InactiveScreen.InactiveScreen();

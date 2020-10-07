@@ -109,19 +109,27 @@ namespace CouponBuddy.Api.Managers
         public async void AddImpression(Vendor vendor, string locationId)
         {
             var result = await _client.PutAsync("AddVendorImpression/" + vendor.Id.ToString() + "/" + locationId, null);
-            var content = await result.Content.ReadAsStringAsync();
+            await result.Content.ReadAsStringAsync();
         }
 
         public async void AddClick(Vendor vendor, string locationId)
         {
             var result = await _client.PutAsync("AddVendorClick/" + vendor.Id.ToString() + "/" + locationId, null);
-            var content = await result.Content.ReadAsStringAsync();
+            await result.Content.ReadAsStringAsync();
         }
 
         public async void AddVendorCouponSent(Vendor vendor, string locationId)
         {
             var result = await _client.PutAsync("AddVendorCouponSent/" + vendor.Id.ToString() + "/" + locationId, null);
-            var content = await result.Content.ReadAsStringAsync();
+            await result.Content.ReadAsStringAsync();
+        }
+
+        public async Task<Task> UpdateUptime(UptimeReport report)
+        {
+            var content = new StringContent(JsonConvert.SerializeObject(report));
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            await _client.PutAsync("uptime/UpdateUptime", content);
+            return Task.CompletedTask;
         }
     }
 }

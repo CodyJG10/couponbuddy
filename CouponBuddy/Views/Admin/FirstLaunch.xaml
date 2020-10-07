@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CouponBuddy.Admin"
         mc:Ignorable="d"
-        Title="First Launch Settings" Height="264.201" Width="550.497" ResizeMode="NoResize">
+        Title="First Launch Settings" Height="364.201" Width="550.497" ResizeMode="NoResize">
 
     <Grid>
         <Label Content="Admin Username" HorizontalAlignment="Left" Margin="38,18,0,0" VerticalAlignment="Top"/>
@@ -13,11 +13,13 @@
         <Label Content="Inactive Screen Ad Duration" HorizontalAlignment="Left" Margin="38,80,0,0" VerticalAlignment="Top"/>
         <Label Content="Inactivity Timeout" HorizontalAlignment="Left" Margin="38,111,0,0" VerticalAlignment="Top"/>
         <Label Content="Location ID" HorizontalAlignment="Left" Margin="38,142,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtAdminUsername" HorizontalAlignment="Left" Height="23" Margin="238,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
-        <TextBox x:Name="txtAdminPassword" HorizontalAlignment="Left" Height="23" Margin="238,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" RenderTransformOrigin="0.48,3.259"/>
-        <TextBox x:Name="txtInactiveAdDuration" HorizontalAlignment="Left" Height="23" Margin="238,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
-        <TextBox x:Name="txtInactivityTimeout" HorizontalAlignment="Left" Height="23" Margin="238,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
-        <TextBox x:Name="txtLocationId" HorizontalAlignment="Left" Height="23" Margin="238,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
-        <Button x:Name="ButtonSave" Content="Save" HorizontalAlignment="Left" Height="33" Margin="288,192,0,0" VerticalAlignment="Top" Width="119" Click="ButtonSave_Click"/>
+        <TextBox x:Name="txtAdminUsername" HorizontalAlignment="Left" Height="23" Margin="238,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290"/>
+        <TextBox x:Name="txtAdminPassword" HorizontalAlignment="Left" Height="23" Margin="238,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290" RenderTransformOrigin="0.48,3.259"/>
+        <TextBox x:Name="txtInactiveAdDuration" HorizontalAlignment="Left" Height="23" Margin="238,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290"/>
+        <TextBox x:Name="txtInactivityTimeout" HorizontalAlignment="Left" Height="23" Margin="238,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290"/>
+        <TextBox x:Name="txtLocationId" HorizontalAlignment="Left" Height="23" Margin="238,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290"/>
+        <Button x:Name="ButtonSave" Content="Save" HorizontalAlignment="Left" Height="33" Margin="287,276,0,0" VerticalAlignment="Top" Width="119" Click="ButtonSave_Click"/>
+        <Label Content="Device ID" HorizontalAlignment="Left" Margin="38,173,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDeviceId" HorizontalAlignment="Left" Height="23" Margin="238,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290"/>
     </Grid>
 </Window>

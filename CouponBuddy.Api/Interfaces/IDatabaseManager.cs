@@ -19,5 +19,6 @@ namespace CouponBuddy.Api.Interfaces
         void AddImpression(Vendor vendor, string locationId);
         void AddClick(Vendor vendor, string locationId);
         void AddVendorCouponSent(Vendor vendor, string locationId);
+        Task<Task> UpdateUptime(UptimeReport report);
     }
 }

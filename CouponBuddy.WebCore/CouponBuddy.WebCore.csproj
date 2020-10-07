@@ -13,17 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Data\Migrations\20201001144806_AddedCouponSentAnalytic.cs" />
-    <Compile Remove="Data\Migrations\20201001144806_AddedCouponSentAnalytic.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="Properties\PublishProfiles\CouponBuddy - Web Deploy.pubxml.user" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Azure.Storage.Blobs" Version="12.6.0" />
-    <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.8" />
@@ -33,6 +27,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="UptimeSharp" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>

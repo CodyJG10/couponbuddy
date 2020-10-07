@@ -26,6 +26,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Timers;
 using CouponBuddy.Admin;
+using CouponBuddy.Entities;
+using CouponBuddy.Properties;
 
 namespace CouponBuddy
 {
@@ -62,8 +64,19 @@ namespace CouponBuddy
             frameMain.Navigate(page);
         }
 
-        protected override void OnClosed(EventArgs e)
+        protected override async void OnClosed(EventArgs e)
         {
+#if (!DEBUG)
+            var db = ServiceLocator.Current.GetService(typeof(IDatabaseManager)) as DatabaseManager;
+            var location = await db.GetLocation(Settings.Default.LOCATION_ID);
+            UptimeReport report = new UptimeReport()
+            {
+                Active = false,
+                DeviceId = Settings.Default.DEVICE_ID,
+                LocationName = location.Name
+            };
+            await db.UpdateUptime(report);
+#endif
             base.OnClosed(e);
             Application.Current.Shutdown();
         }
