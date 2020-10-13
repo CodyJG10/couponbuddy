@@ -25,26 +25,29 @@
         </Grid.Background>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.2*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <sharedviews:BackButton Width="48"
+            <sharedviews:BackButton Width="200"
                                     HorizontalAlignment="Left" 
-                                    Grid.Row="0"/>
+                                    VerticalAlignment="Top"
+                                    Grid.Row="0"
+                                    Padding="15"
+                                    Grid.RowSpan="2"/>
 
             <Label x:Name="lblTitle"
-                Content="{Binding Title}"
-                FontSize="35"
+                   Content="{Binding Title}"
+                   FontSize="35"
                    Foreground="{StaticResource FONT_COLOR}"
-                HorizontalContentAlignment="Center"
-                Grid.Row="1"/>
+                   HorizontalContentAlignment="Center"
+                   Grid.Row="1"/>
         </Grid>
 
         <ItemsControl Grid.Row="1"

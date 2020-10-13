@@ -46,7 +46,7 @@ namespace CouponBuddy.Views.Shared
         private void OnFontSizeChanged(DependencyPropertyChangedEventArgs e)
         {
             ButtonFontSize = (double)e.NewValue;
-            btnBack.FontSize = ButtonFontSize;
+            //btnBack.FontSize = ButtonFontSize;
         }
 
         private void BtnBack_MouseDown(object sender, MouseButtonEventArgs e)

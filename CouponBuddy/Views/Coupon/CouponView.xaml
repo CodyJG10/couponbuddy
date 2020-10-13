@@ -31,7 +31,8 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
-        <sharedviews:BackButton Width="48"
+        <sharedviews:BackButton Width="200"
+                                Padding="5"
                                 HorizontalAlignment="Left" 
                                 Grid.Row="0"/>
 
@@ -56,7 +57,7 @@
                                    FontSize="45"
                                    Margin="0,0,50,0"/>
                                 <TextBox Width="450"
-                                     Text="codyjg10@gmail.com"
+                                     Text=""
                                      FontSize="35"
                                      HorizontalContentAlignment="Center"
                                      VerticalContentAlignment="Center"

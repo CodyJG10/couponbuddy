@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CouponBuddy.Views.Shared"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="50">
+             d:DesignHeight="50" d:DesignWidth="100">
     <Grid Background="Transparent">
         <!--<Button Content="🡐"
                 FontSize="85"
@@ -17,7 +17,11 @@
                 BorderThickness="0"
                 Click="BtnBack_Click" RenderTransformOrigin="0.402,0.521"/>-->
 
-        <Label Content="🡐"
+        <Image Source="/Assets/go_back.png"
+               Margin="5"
+               MouseDown="BtnBack_MouseDown"/>
+
+        <!--<Label Content="🡐"
                FontSize="30"
                MouseDown="BtnBack_MouseDown"
                Foreground="Red"
@@ -25,6 +29,6 @@
                VerticalContentAlignment="Center"
                Padding="0"
                x:Name="btnBack"
-               Background="Transparent"/>
+               Background="Transparent"/>-->
     </Grid>
 </UserControl>
