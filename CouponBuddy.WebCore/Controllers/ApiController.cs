@@ -166,5 +166,13 @@ namespace CouponBuddy.Web.Controllers
             }
             return Content("Succesfully updated vendor analytics");
         }
+
+        [HttpPost("AddUserContact")]
+        public IActionResult AddUserContact([FromBody] UserContactData contact)
+        {
+            _context.Add(contact);
+            _context.SaveChanges();
+            return Ok("Succesfully created user contact");
+        }
     }
 }

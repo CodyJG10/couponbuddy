@@ -36,6 +36,10 @@ namespace CouponBuddy
 
             IsFirstLaunch = Settings.Default.FIRST_LAUNCH;
 
+#if DEBUG
+            IsFirstLaunch = false;
+#endif
+
             if (!IsFirstLaunch)
             { 
                 MainWindow = new MainWindow();

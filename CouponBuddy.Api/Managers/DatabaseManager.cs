@@ -131,5 +131,12 @@ namespace CouponBuddy.Api.Managers
             await _client.PutAsync("uptime/UpdateUptime", content);
             return Task.CompletedTask;
         }
+
+        public async void AddUserContact(UserContactData contact)
+        {
+            var content = new StringContent(JsonConvert.SerializeObject(contact));
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            await _client.PostAsync("AddUserContact", content);
+        }
     }
 }

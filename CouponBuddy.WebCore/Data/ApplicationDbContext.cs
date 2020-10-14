@@ -25,6 +25,7 @@ namespace CouponBuddy.Web.Data
         public DbSet<VendorAnalytics> VendorAnalytics { get; set; }
         public DbSet<VendorCoupon> VendorCoupons { get; set; }
         public DbSet<UptimeReport> UptimeReports { get; set; }
+        public DbSet<UserContactData> UserContacts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

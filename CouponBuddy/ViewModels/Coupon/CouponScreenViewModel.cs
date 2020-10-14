@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using CouponBuddy.Views.Coupon;
 using QRCoder;
 using System.Windows.Media;
+using CouponBuddy.Api.Interfaces;
+using CommonServiceLocator;
 
 namespace CouponBuddy.ViewModels.Coupon
 {
@@ -27,7 +29,6 @@ namespace CouponBuddy.ViewModels.Coupon
             }
         }
 
-
         public CouponScreenViewModel(VendorCoupon coupon)
         {
             Coupon = coupon;
@@ -38,6 +39,14 @@ namespace CouponBuddy.ViewModels.Coupon
         {
             try
             {
+                var db = ServiceLocator.Current.GetService(typeof(IDatabaseManager)) as IDatabaseManager;
+                UserContactData data = new UserContactData()
+                {
+                    Contact = email,
+                    Date = DateTime.Now,
+                    LocationId = Properties.Settings.Default.LOCATION_ID
+                };
+                db.AddUserContact(data);
                 EmailSender.SendEmail(Coupon, email);
                 MainWindow.Instance.NavigateToPage(new CouponSentScreen());
             }
@@ -49,8 +58,23 @@ namespace CouponBuddy.ViewModels.Coupon
 
         public void SendText(string number)
         {
-            TextSender.SendText(Coupon, number);
-            MainWindow.Instance.NavigateToPage(new CouponSentScreen());
+            try
+            {
+                var db = ServiceLocator.Current.GetService(typeof(IDatabaseManager)) as IDatabaseManager;
+                UserContactData data = new UserContactData()
+                {
+                    Contact = number,
+                    Date = DateTime.Now,
+                    LocationId = Properties.Settings.Default.LOCATION_ID
+                };
+                db.AddUserContact(data);
+                TextSender.SendText(Coupon, number);
+                MainWindow.Instance.NavigateToPage(new CouponSentScreen());
+            }
+            catch (Exception e)
+            { 
+                Console.WriteLine("[Coupon] error texting coupon: " + e.Message);
+            }
         }
 
         private void LoadQrImage()
