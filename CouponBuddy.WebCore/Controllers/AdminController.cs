@@ -16,6 +16,9 @@ using CouponBuddy.WebCore.PageUtil;
 using Microsoft.AspNetCore.Http;
 using CouponBuddy.Web.Storage;
 using CouponBuddy.WebCore.Storage;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.AspNetCore.Authentication.OAuth.Claims;
+using CouponBuddy.WebCore.Models;
 
 namespace CouponBuddy.Web.Controllers
 {
@@ -494,6 +497,88 @@ namespace CouponBuddy.Web.Controllers
             {
                 return BadRequest();
             }
+        }
+        #endregion
+
+        #region Analytics
+        [Route("CouponAnalytics")]
+        public IActionResult CouponAnalytics(string locationId)
+        {
+            CouponAnalyticsChart model = new CouponAnalyticsChart();
+
+            var location = _context.Locations.Single(x => x.Id == locationId);
+
+            model.Location = location;
+
+            //var vendorsAtLocation = _context.Vendors.AsEnumerable().Where(x => x.GetLocations().Contains(location.Id));
+            //var allAnalytics = _context.VendorAnalytics.AsNoTracking().AsEnumerable();
+
+            ////Day, coupons sent
+            //Dictionary<int, int> couponsSent = new Dictionary<int, int>();
+
+            //for (int i = 0; i < DateTime.Now.Day; i++)
+            //{
+            //    couponsSent.Add(i, 0);
+            //}
+
+            //foreach (var vendor in vendorsAtLocation)
+            //{
+            //    var analytics = allAnalytics.SingleOrDefault(x => x.VendorId == vendor.Id.ToString());
+            //    if (analytics == null)
+            //        continue;
+            //    var couponsSentThisMonth = analytics.GetCurrentMonthCouponsSent();
+
+            //    foreach (var date in couponsSentThisMonth)
+            //    {
+            //        couponsSent[date.Day] += 1;
+            //    }
+            //}
+
+            //for (int i = 0; i < couponsSent.Count; i++)
+            //{
+            //    var day = couponsSent.Keys.ToList()[i];
+            //    int value = couponsSent.Values.ToList()[i];
+            //    var valueModel = new CouponAnalyticsChart.KeyValue()
+            //    {
+            //        Title = DateTime.Now.AddDays((-DateTime.Now.Day) + day).ToString(),
+            //        Value = value
+            //    };
+            //    model.Values.Add(valueModel);
+            //}
+            //return View(model);
+            return View(model);
+        }
+
+        public string GetCouponsSentThisMonth(string locationId)
+        {
+            CouponAnalyticsChart model = new CouponAnalyticsChart();
+
+            var location = _context.Locations.Single(x => x.Id == locationId);
+
+            model.Location = location;
+
+            var vendorsAtLocation = _context.Vendors.AsEnumerable().Where(x => x.GetLocations().Contains(location.Id));
+            var allAnalytics = _context.VendorAnalytics.AsNoTracking().AsEnumerable();
+
+            Dictionary<int, int> values = new Dictionary<int, int>();
+
+            for (int i = 1; i < DateTime.Now.Day; i++)
+            {
+                values.Add(i, 0);
+            }
+
+            foreach (var vendor in vendorsAtLocation)
+            {
+                var vendorAnalytics = _context.VendorAnalytics.AsEnumerable().Single(x => x.VendorId == vendor.Id.ToString());
+                var couponsSentThisMonthFromVendor = vendorAnalytics.GetCurrentMonthCouponsSent();
+                foreach (var date in couponsSentThisMonthFromVendor)
+                {
+                    var day = date.Day;
+                    values[day]++;
+                }
+            }
+
+            return JsonConvert.SerializeObject(values);
         }
         #endregion
     }

@@ -172,29 +172,6 @@ namespace CouponBuddy.Web.Controllers
 
         #endregion
 
-        //#region Analytics Functions
-        //[HttpGet("Analytics")]
-        //public IActionResult ViewAnalytics()
-        //{
-        //    var locationIds = _vendor.GetLocations();
-        //    List<Location> locations = new List<Location>();
-        //    locationIds.ForEach(x =>
-        //    {
-        //        var location = _context.Locations.Single(y => y.Id == x);
-        //        locations.Add(location);
-        //    });
-
-        //    return View("Analytics", locations);
-        //}
-
-        //[HttpGet("LocationAnalytics")]
-        //public IActionResult ViewDetailedAnalytics(string locationId)
-        //{
-        //    var location = _context.Locations.Single(x => x.Id == locationId);
-        //    return View("DetailedAnalytics", location);
-        //}
-        //#endregion
-
         #region Analytics Functions
         [HttpGet("Analytics")]
         public IActionResult ViewAnalytics()

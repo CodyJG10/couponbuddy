@@ -1,0 +1,247 @@
+﻿@using CouponBuddy.Web.Data
+@using CouponBuddy.Entities
+@using System.Linq
+@using CouponBuddy.WebCore.Models
+
+@model CouponAnalyticsChart
+
+@inject ApplicationDbContext _context
+@*@{
+        List<string> XLabels = new List<string>();
+        List<int> YValues = new List<int>();
+
+        foreach (var values in Model.Values)
+        {
+            XLabels.Add(values.Title);
+        }
+
+        foreach (var values in Model.Values)
+        {
+            YValues.Add(values.Value);
+        }
+
+        ViewData["Title"] = "Add Vendor To Location";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    @{
+        int totalCouponsSentThisMonth = 0;
+        var analytics = _context.VendorAnalytics.ToList().Where(x => x.LocationId == Model.Location.Id).ToList();
+        foreach (var analytic in analytics)
+        {
+            var coupons = analytic.GetCurrentMonthCouponsSent();
+            totalCouponsSentThisMonth += coupons.Count;
+        }
+    }
+
+    Coupons Sent This Month: @totalCouponsSentThisMonth
+
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Bar</title>
+    </head>
+    <body>
+        <div class="box-body">
+
+            <div class="chart-container">
+                <canvas id="chart" style="width:100%; height:500px"></canvas>
+            </div>
+        </div>
+    </body>
+    </html>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script type="text/javascript">
+
+            $(function () {
+        var chartName = "chart";
+            var ctx = document.getElementById(chartName).getContext('2d');
+            var data = {
+                    labels: @Html.Raw(XLabels),
+                    datasets: [{
+                        label: "Departments Chart",
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 0, 0)',
+                            'rgba(0, 255, 0)',
+                            'rgba(0, 0, 255)',
+                            'rgba(192, 192, 192)',
+                            'rgba(255, 255, 0)',
+                            'rgba(255, 0, 255)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 0, 0)',
+                            'rgba(0, 255, 0)',
+                            'rgba(0, 0, 255)',
+                            'rgba(192, 192, 192)',
+                            'rgba(255, 255, 0)',
+                            'rgba(255, 0, 255)'
+                        ],
+                        borderWidth: 1,
+                        data: @Html.Raw(YValues)
+        }]
+                };
+
+    var options = {
+                    maintainAspectRatio: false,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                min: 0,
+                                beginAtZero: true
+                            },
+                            gridLines: {
+                                display: true,
+                                color: "rgba(255,99,164,0.2)"
+                            }
+    }],
+                        xAxes: [{
+                            ticks: {
+                                min: 0,
+                                beginAtZero: true
+                            },
+                            gridLines: {
+                                display: false
+                            }
+                        }]
+                    }
+                };
+
+           var myChart = new  Chart(ctx, {
+                    options: options,
+                    data: data,
+                    type:'bar'
+
+                });
+            });
+    </script>*@
+
+
+
+@*<!DOCTYPE HTML>
+    <html>
+    <head>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <script type="text/javascript">
+
+            window.onload = function () {
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    title: {
+                        text: "Coupons Sent This Month"
+                    },
+                    data: [
+                        {
+                            // Change type to "doughnut", "line", "splineArea", etc.
+                            type: "column",
+                            dataPoints: [
+                                { label: "apple", y: 10 },
+                                { label: "orange", y: 15 },
+                                { label: "banana", y: 25 },
+                                { label: "mango", y: 30 },
+                                { label: "grape", y: 28 }
+                            ]
+                        }
+                    ]
+                });
+                chart.render();
+            }
+        </script>
+    </head>
+    <body>
+        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    </body>
+    </html>*@
+
+
+
+@*<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+                google.charts.load('current', {'packages':['corechart']});
+                google.charts.setOnLoadCallback(drawChart(1));
+
+
+        function drawChart(type) {
+               $.ajax({
+                type: "GET",
+                   url: "GetCurrentMonthCouponData?locationId=@Model.Location.Id",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                    success: function (r) {
+                        var chartdata = new google.visualization.DataTable();
+                        chartdata.addColumn('date', 'Date');
+                        chartdata.addColumn('number', 'Coupons Sent');
+
+                        for (var i = 0; i < r.length; i++) {
+                            var day = r[i].Day;
+                            var dayFormatted = new Date(Date.parse(day));
+                            var value = r[i].Value;
+                            chartdata.addRow([dayFormatted, value]);
+                        }
+
+                        var options = {'title':'Coupons Sent This Month'};
+
+                        var chartName = "chart_container_" + type.toString();
+                        var chart = new google.visualization.LineChart(document.getElementById(chartName));
+                        chart.draw(chartdata, options);
+
+                    },
+                  failure: function (r) {
+                      alert('error');
+                    alert(r.d);
+                },
+                  error: function (r) {
+                      alert('error');
+                    alert(r.d);
+                }
+              });
+        }
+    </script>*@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title: {
+		text: "Number of Employees under Each Manager"
+	},
+	axisY: {
+		title: "No. of Employees"
+	},
+	data: [{
+		type: "column",
+		dataPoints: @Html.Raw(ViewBag.DataPoints)
+	}]
+});
+chart.render();
+
+}
+    </script>
+</head>
+<body>
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>  

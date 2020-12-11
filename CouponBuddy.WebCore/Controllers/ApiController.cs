@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
 using CouponBuddy.Entities;
 using CouponBuddy.Web.Areas.Identity;
 using CouponBuddy.Web.Data;
@@ -83,60 +84,74 @@ namespace CouponBuddy.Web.Controllers
         }
 
         [HttpPut("AddVendorClick/{vendorId}/{locationId}")]
-        public IActionResult AddClick([FromRoute]int vendorId, [FromRoute]string locationId)
+        public IActionResult AddClick([FromRoute] int vendorId, [FromRoute] string locationId)
         {
-            //First find if analytics exist
             try
-            {
-                //If no exception, analytics exist
-                var analytics = _context.VendorAnalytics.Single(x => x.VendorId == vendorId.ToString() &&
-                                                                x.LocationId == locationId.ToString());
-                analytics.AddClick(DateTime.Now);
-                _context.Update(analytics);
-                _context.SaveChanges();
-            }
-            catch (Exception)
-            {
-                //if exception, we need to create analytics
-                VendorAnalytics analytics = new VendorAnalytics()
+            { 
+            if (_context.VendorAnalytics.Any(x => x.VendorId == vendorId.ToString() &&
+                                                                 x.LocationId == locationId.ToString()))
                 {
-                    LocationId = locationId.ToString(),
-                    VendorId = vendorId.ToString()
-                };
-                analytics.AddClick(DateTime.Now);
-                _context.VendorAnalytics.Add(analytics);
-                _context.SaveChanges();
+                    var analytics = _context.VendorAnalytics.Single(x => x.VendorId == vendorId.ToString() &&
+                                                                   x.LocationId == locationId.ToString());
+                    analytics.AddClick(DateTime.Now);
+                    _context.Update(analytics);
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    VendorAnalytics analytics = new VendorAnalytics()
+                    {
+                        LocationId = locationId.ToString(),
+                        VendorId = vendorId.ToString(),
+                        Id = Guid.NewGuid().ToString()
+                    };
+                    analytics.AddClick(DateTime.Now);
+                    _context.VendorAnalytics.Add(analytics);
+                    _context.SaveChanges();
+                }
+
+                return Content("Succesfully updated vendor analytics");
             }
-            return Content("Succesfully updated vendor analytics");
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
 
         [HttpPut("AddVendorImpression/{vendorId}/{locationId}")]
-        public IActionResult AddImpression([FromRoute]int vendorId, [FromRoute]string locationId)
+        public IActionResult AddImpression([FromRoute] int vendorId, [FromRoute] string locationId)
         {
             //First find if analytics exist
             try
             {
-                //If no exception, analytics exist
-                var analytics = _context.VendorAnalytics.Single(x => x.VendorId == vendorId.ToString() &&
-                                                                x.LocationId == locationId);
-                analytics.AddImpression(DateTime.Now);
-                _context.Update(analytics);
-                _context.SaveChanges();
-            }
-            catch (Exception)
-            {
-                //if exception, we need to create analytics
-                VendorAnalytics analytics = new VendorAnalytics()
+                if (_context.VendorAnalytics.Any(x => x.VendorId == vendorId.ToString() &&
+                                                                     x.LocationId == locationId))
                 {
-                    LocationId = locationId,
-                    VendorId = vendorId.ToString()
-                };
-                analytics.AddImpression(DateTime.Now);
-                _context.VendorAnalytics.Add(analytics);
-                _context.SaveChanges();
+                    var analytics = _context.VendorAnalytics.Single(x => x.VendorId == vendorId.ToString() &&
+                                                                    x.LocationId == locationId);
+                    analytics.AddImpression(DateTime.Now);
+                    _context.Update(analytics);
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    VendorAnalytics analytics = new VendorAnalytics()
+                    {
+                        LocationId = locationId,
+                        VendorId = vendorId.ToString(),
+                        Id = Guid.NewGuid().ToString()
+                    };
+                    analytics.AddImpression(DateTime.Now);
+                    _context.VendorAnalytics.Add(analytics);
+                    _context.SaveChanges();
+                }
+                return Content("Succesfully updated vendor analytics");
             }
-            return Content("Succesfully updated vendor analytics");
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPut("AddVendorCouponSent/{vendorId}/{locationId}")]
@@ -145,26 +160,34 @@ namespace CouponBuddy.Web.Controllers
             //First find if analytics exist
             try
             {
-                //If no exception, analytics exist
-                var analytics = _context.VendorAnalytics.Single(x => x.VendorId == vendorId.ToString() &&
-                                                                x.LocationId == locationId);
-                analytics.AddCouponSent(DateTime.Now);
-                _context.Update(analytics);
-                _context.SaveChanges();
-            }
-            catch (Exception)
-            {
-                //if exception, we need to create analytics
-                VendorAnalytics analytics = new VendorAnalytics()
+                if (_context.VendorAnalytics.Any(x => x.VendorId == vendorId.ToString() &&
+                                                        x.LocationId == locationId))
                 {
-                    LocationId = locationId,
-                    VendorId = vendorId.ToString()
-                };
-                analytics.AddCouponSent(DateTime.Now);
-                _context.VendorAnalytics.Add(analytics);
-                _context.SaveChanges();
+                    var analytics = _context.VendorAnalytics.Single(x => x.VendorId == vendorId.ToString() &&
+                                                                    x.LocationId == locationId);
+                    analytics.AddCouponSent(DateTime.Now);
+                    _context.Update(analytics);
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    //if analytics don't exist, we create a new one
+                    VendorAnalytics analytics = new VendorAnalytics()
+                    {
+                        LocationId = locationId,
+                        VendorId = vendorId.ToString(),
+                        Id = Guid.NewGuid().ToString()
+                    };
+                    analytics.AddCouponSent(DateTime.Now);
+                    _context.VendorAnalytics.Add(analytics);
+                    _context.SaveChanges();
+                }
+                return Content("Succesfully updated vendor analytics");
             }
-            return Content("Succesfully updated vendor analytics");
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);  
+            }
         }
 
         [HttpPost("AddUserContact")]

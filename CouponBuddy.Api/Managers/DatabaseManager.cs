@@ -108,20 +108,17 @@ namespace CouponBuddy.Api.Managers
 
         public async void AddImpression(Vendor vendor, string locationId)
         {
-            var result = await _client.PutAsync("AddVendorImpression/" + vendor.Id.ToString() + "/" + locationId, null);
-            await result.Content.ReadAsStringAsync();
+            await _client.PutAsync("AddVendorImpression/" + vendor.Id.ToString() + "/" + locationId, null);
         }
 
         public async void AddClick(Vendor vendor, string locationId)
         {
-            var result = await _client.PutAsync("AddVendorClick/" + vendor.Id.ToString() + "/" + locationId, null);
-            await result.Content.ReadAsStringAsync();
+            await _client.PutAsync("AddVendorClick/" + vendor.Id.ToString() + "/" + locationId, null);
         }
 
         public async void AddVendorCouponSent(Vendor vendor, string locationId)
         {
-            var result = await _client.PutAsync("AddVendorCouponSent/" + vendor.Id.ToString() + "/" + locationId, null);
-            await result.Content.ReadAsStringAsync();
+            await _client.PutAsync("AddVendorCouponSent/" + vendor.Id.ToString() + "/" + locationId, null);
         }
 
         public async Task<Task> UpdateUptime(UptimeReport report)

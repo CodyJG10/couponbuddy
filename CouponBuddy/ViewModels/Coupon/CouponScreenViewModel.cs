@@ -10,6 +10,7 @@ using QRCoder;
 using System.Windows.Media;
 using CouponBuddy.Api.Interfaces;
 using CommonServiceLocator;
+using Xceed.Wpf.Toolkit;
 
 namespace CouponBuddy.ViewModels.Coupon
 {
@@ -35,7 +36,7 @@ namespace CouponBuddy.ViewModels.Coupon
             LoadQrImage();
         }
 
-        public void SendEmail(string email)
+        public async void SendEmail(string email)
         {
             try
             {
@@ -47,6 +48,9 @@ namespace CouponBuddy.ViewModels.Coupon
                     LocationId = Properties.Settings.Default.LOCATION_ID
                 };
                 db.AddUserContact(data);
+                string locationId = Properties.Settings.Default.LOCATION_ID;
+                var vendor = (await db.GetVendors(locationId)).Single(x => x.Id == Coupon.VendorId);
+                db.AddVendorCouponSent(vendor, locationId);
                 EmailSender.SendEmail(Coupon, email);
                 MainWindow.Instance.NavigateToPage(new CouponSentScreen());
             }
@@ -56,7 +60,7 @@ namespace CouponBuddy.ViewModels.Coupon
             }
         }
 
-        public void SendText(string number)
+        public async void SendText(string number)
         {
             try
             {
@@ -68,6 +72,9 @@ namespace CouponBuddy.ViewModels.Coupon
                     LocationId = Properties.Settings.Default.LOCATION_ID
                 };
                 db.AddUserContact(data);
+                string locationId = Properties.Settings.Default.LOCATION_ID;
+                var vendor = (await db.GetVendors(locationId)).Single(x => x.Id == Coupon.VendorId);
+                db.AddVendorCouponSent(vendor, locationId);
                 TextSender.SendText(Coupon, number);
                 MainWindow.Instance.NavigateToPage(new CouponSentScreen());
             }

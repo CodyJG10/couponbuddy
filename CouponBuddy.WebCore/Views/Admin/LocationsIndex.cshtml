@@ -28,7 +28,8 @@
             <td>
                 <a asp-action="ViewLocation" asp-route-id="@item.Id">View</a> |
                 <a asp-action="ViewEditLocation" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="ViewDeleteLocation" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="ViewDeleteLocation" asp-route-id="@item.Id">Delete</a> | 
+                <a asp-action="CouponAnalytics" asp-route-locationId="@item.Id">Analytics</a>
             </td>
         </tr>
 }

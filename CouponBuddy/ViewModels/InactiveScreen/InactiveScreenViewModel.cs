@@ -3,6 +3,7 @@ using CouponBuddy.Api.Interfaces;
 using CouponBuddy.Api.Managers;
 using CouponBuddy.Controllers;
 using CouponBuddy.Entities;
+using CouponBuddy.Navigation;
 using CouponBuddy.Util;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,12 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 
 namespace CouponBuddy.ViewModels.InactiveScreen
 {
-    public class InactiveScreenViewModel : ViewModel
+    public class InactiveScreenViewModel : ViewModel   
     {
         private List<Uri> Images = new List<Uri>();
         private int currentImageIndex = 0;
