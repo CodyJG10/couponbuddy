@@ -4,8 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CouponBuddy.Views.LoadingScreen"
-      xmlns:fa="http://schemas.fontawesome.io/icons/"
       xmlns:models="clr-namespace:CouponBuddy.ViewModels.LoadingScreen"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d" 
       Background="White"
       d:DesignHeight="1720" d:DesignWidth="1080"
@@ -26,10 +26,10 @@
                HorizontalAlignment="Center"
                VerticalAlignment="Center"/>
 
-        <fa:ImageAwesome Icon="Spinner"
+        <!--<fa:ImageAwesome Icon="Spinner"
                          Spin="True"
                          SpinDuration="4" 
-                         Grid.Row="1"/>
+                         Grid.Row="1"/>-->
 
         <Label HorizontalAlignment="Center"
                Grid.Row="2"

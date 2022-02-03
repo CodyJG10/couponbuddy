@@ -25,6 +25,8 @@ namespace CouponBuddy.Api.Managers
             _client = new HttpClient();
             var token = GetAuthenticationToken(database, username, password).GetAwaiter().GetResult();
 
+            if(database.EndsWith("/"))
+                database = database.Substring(0, database.Length - 1); 
             _client = new HttpClient()
             {
                 BaseAddress = new Uri(database + "/Api/")

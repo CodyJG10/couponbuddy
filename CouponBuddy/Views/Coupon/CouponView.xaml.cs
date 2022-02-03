@@ -41,8 +41,8 @@ namespace CouponBuddy.Views.Coupon
 
         private void BtnSendText_Click(object sender, RoutedEventArgs e)
         {
-            string number = txtPhoneNumber.Text;
-            ViewModel.SendText(number);
+            //string number = txtPhoneNumber.Text;
+            //ViewModel.SendText(number);
         }
     }
 }

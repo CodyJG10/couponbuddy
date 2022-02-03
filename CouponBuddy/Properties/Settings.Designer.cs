@@ -12,7 +12,7 @@ namespace CouponBuddy.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.0.3.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,7 +25,7 @@ namespace CouponBuddy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("8ee80e54-cb54-4bd7-bc3e-c55c066a2bf6")]
+        [global::System.Configuration.DefaultSettingValueAttribute("c42f698c-7d4c-4beb-8256-6ea5e2f4d758")]
         public string LOCATION_ID {
             get {
                 return ((string)(this["LOCATION_ID"]));
@@ -85,7 +85,7 @@ namespace CouponBuddy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool FIRST_LAUNCH {
             get {
                 return ((bool)(this["FIRST_LAUNCH"]));
@@ -97,7 +97,7 @@ namespace CouponBuddy.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public int DEVICE_ID {
             get {
                 return ((int)(this["DEVICE_ID"]));

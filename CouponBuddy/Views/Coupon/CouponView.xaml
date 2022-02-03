@@ -8,7 +8,7 @@
       xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
       d:DesignHeight="1720" d:DesignWidth="1080"
-      Title="CouponView"
+      Title="Coupon View"
       Background="White">
 
     <Page.Resources>
@@ -84,12 +84,12 @@
                                Foreground="White"
                                FontSize="45"
                                Margin="0,0,50,0"/>
-                            <wpfx:MaskedTextBox Width="350" 
+                            <!--<wpfx:MaskedTextBox Width="350" 
                                                 Mask="(000) 000-0000"
                                                 FontSize="45"
                                                 HorizontalContentAlignment="Center"
                                                 VerticalContentAlignment="Center"
-                                                x:Name="txtPhoneNumber"/>
+                                                x:Name="txtPhoneNumber"/>-->
                         </StackPanel>
                         <Button Content="Send Text"
                                 x:Name="btnSendText"

@@ -35,10 +35,13 @@ namespace CouponBuddy
             ConfigureServices();
 
             IsFirstLaunch = Settings.Default.FIRST_LAUNCH;
+            //IsFirstLaunch = true;
 
-#if DEBUG
-            IsFirstLaunch = false;
-#endif
+            //IsFirstLaunch = true;
+
+            //#if DEBUG
+            //            IsFirstLaunch = false;
+            //#endif
 
             if (!IsFirstLaunch)
             { 

@@ -10,7 +10,6 @@ using QRCoder;
 using System.Windows.Media;
 using CouponBuddy.Api.Interfaces;
 using CommonServiceLocator;
-using Xceed.Wpf.Toolkit;
 
 namespace CouponBuddy.ViewModels.Coupon
 {

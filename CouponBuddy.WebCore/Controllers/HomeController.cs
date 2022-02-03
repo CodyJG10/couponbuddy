@@ -12,14 +12,37 @@ namespace CouponBuddy.Web.Controllers
 {
     public class HomeController : Controller
     {
+
+        //private RoleManager<IdentityRole> _roleManager;
+        //private UserManager<User> _userManager;
+
+        //public HomeController(RoleManager<IdentityRole> roleManager,
+        //    UserManager<User> userManager)
+        //{
+        //    _roleManager = roleManager;
+        //    _userManager = userManager;
+        //}
+
         public IActionResult Index()
         {
+            //_roleManager.CreateAsync(new IdentityRole("Admin")).GetAwaiter().GetResult();
+            //_roleManager.CreateAsync(new IdentityRole("LocationManager")).GetAwaiter().GetResult();
+            //_roleManager.CreateAsync(new IdentityRole("Vendor")).GetAwaiter().GetResult();
+
+            //if (User.Identity.IsAuthenticated)
+            //{
+            //    var user = _userManager.FindByNameAsync(User.Identity.Name).GetAwaiter().GetResult();
+            //    _userManager.AddToRoleAsync(user, "Admin").GetAwaiter().GetResult();
+            //    return Content("Success");
+            //}
+
             return View();
         }
 
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
+
 
             return View();
         }

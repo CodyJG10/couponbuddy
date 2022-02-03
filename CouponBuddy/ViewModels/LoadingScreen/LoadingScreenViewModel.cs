@@ -2,7 +2,6 @@
 using CouponBuddy.Controllers;
 using CouponBuddy.Api.Interfaces;
 using CouponBuddy.Api.Managers;
-using CouponBuddy.Controllers;
 using CouponBuddy.Entities;
 using CouponBuddy.Navigation;
 using CouponBuddy.Util;

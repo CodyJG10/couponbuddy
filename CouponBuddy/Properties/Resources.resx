@@ -112,13 +112,13 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BASE_URL" xml:space="preserve">
-    <value>https://couponbuddy.azurewebsites.net/</value>
+    <value>https://localhost:44360/</value>
   </data>
   <data name="EMAIL_FROM" xml:space="preserve">
     <value>coupon@pg-technologies.com</value>
@@ -133,6 +133,6 @@
     <value>cody@pg-technologies.com</value>
   </data>
   <data name="STORAGE_CONNECTION_STRING" xml:space="preserve">
-    <value>DefaultEndpointsProtocol=https;AccountName=couponbuddy;AccountKey=HUT5dj8HeOL2EGVf116GjO3y/EcP2Yf+IfFjFwVH/WH3WDKv3lNjmwuyqHftL48/7Wh+7EfTTG0Xqt1dwX4OgA==;EndpointSuffix=core.windows.net</value>
+    <value>AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;DefaultEndpointsProtocol=http;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;</value>
   </data>
 </root>

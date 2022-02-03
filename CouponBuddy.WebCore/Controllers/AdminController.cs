@@ -549,37 +549,37 @@ namespace CouponBuddy.Web.Controllers
             return View(model);
         }
 
-        public string GetCouponsSentThisMonth(string locationId)
-        {
-            CouponAnalyticsChart model = new CouponAnalyticsChart();
+        //public string GetCouponsSentThisMonth(string locationId)
+        //{
+        //    CouponAnalyticsChart model = new CouponAnalyticsChart();
 
-            var location = _context.Locations.Single(x => x.Id == locationId);
+        //    var location = _context.Locations.Single(x => x.Id == locationId);
 
-            model.Location = location;
+        //    model.Location = location;
 
-            var vendorsAtLocation = _context.Vendors.AsEnumerable().Where(x => x.GetLocations().Contains(location.Id));
-            var allAnalytics = _context.VendorAnalytics.AsNoTracking().AsEnumerable();
+        //    var vendorsAtLocation = _context.Vendors.AsEnumerable().Where(x => x.GetLocations().Contains(location.Id));
+        //    var allAnalytics = _context.VendorAnalytics.AsNoTracking().AsEnumerable();
 
-            Dictionary<int, int> values = new Dictionary<int, int>();
+        //    Dictionary<int, int> values = new Dictionary<int, int>();
 
-            for (int i = 1; i < DateTime.Now.Day; i++)
-            {
-                values.Add(i, 0);
-            }
+        //    for (int i = 1; i < DateTime.Now.Day; i++)
+        //    {
+        //        values.Add(i, 0);
+        //    }
 
-            foreach (var vendor in vendorsAtLocation)
-            {
-                var vendorAnalytics = _context.VendorAnalytics.AsEnumerable().Single(x => x.VendorId == vendor.Id.ToString());
-                var couponsSentThisMonthFromVendor = vendorAnalytics.GetCurrentMonthCouponsSent();
-                foreach (var date in couponsSentThisMonthFromVendor)
-                {
-                    var day = date.Day;
-                    values[day]++;
-                }
-            }
+        //    foreach (var vendor in vendorsAtLocation)
+        //    {
+        //        var vendorAnalytics = _context.VendorAnalytics.AsEnumerable().Single(x => x.VendorId == vendor.Id.ToString());
+        //        var couponsSentThisMonthFromVendor = vendorAnalytics.GetCurrentMonthCouponsSent();
+        //        foreach (var date in couponsSentThisMonthFromVendor)
+        //        {
+        //            var day = date.Day;
+        //            values[day]++;
+        //        }
+        //    }
 
-            return JsonConvert.SerializeObject(values);
-        }
+        //    return JsonConvert.SerializeObject(values);
+        //}
         #endregion
     }
 }

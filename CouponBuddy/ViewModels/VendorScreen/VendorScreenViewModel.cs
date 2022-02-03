@@ -15,8 +15,6 @@ using System.Timers;
 using System.Windows.Media;
 using QRCoder;
 using System.Drawing;
-using Gma.QrCodeNet.Encoding;
-using Gma.QrCodeNet.Encoding.Windows.Render;
 using System.Windows.Media.Imaging;
 using System.Windows.Input;
 using CouponBuddy.Views.Coupon;
